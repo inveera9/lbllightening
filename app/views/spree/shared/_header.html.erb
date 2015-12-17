@@ -1,0 +1,167 @@
+<section class="top-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12 col-md-offset-6">
+        <div  class="col-lg-12 col-md-12 col-sm-12 col-sx-12 col-md-offset-2 mar-pad text-center">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12 mob-nmbr">
+            <i class="fa fa-mobile mob-lg mob-lg"></i> 000 - 000 - 000 - 0000
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-12 col-sx-12">
+            <div class="trac-ord">
+              <ul class="list-inline">
+                <li><a href="#">Track Program</a></li>
+                <li><a href="#">Track My Order</a></li>
+                <li><a href="#">Help Center</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<header class="head-marg">
+  <div class="container">
+    <div class="row">
+      <div class="srch-lbl">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12">
+          <%= link_to spree.root_path do %>
+            <img src="/assets/logo.png" width="201" height="79">
+          <% end %>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12">
+          <div class="form-group has-feedback">
+            <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
+            <%= render :partial => 'spree/shared/search' %>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12">
+          <div class="free-shipping">
+            <ul class="list-inline text-right">
+              <li><a href="#">FREE SHIPPING!<br> <span class="sml-tx">free shipping on most order</span></a></li>
+              <li class="dropdown">
+                <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">ACCOUNT<br> <span class="sml-tx">(sign in)</span> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                <li><%= link_to "Sign in", login_path %></li>
+                <li><%= link_to "Register", signup_path %></li>
+                </ul>
+              </li>
+              <li>
+                <div class="cart-tx">
+                  <%= link_to cart_path do %>
+                    <span>
+                      <img src="/assets/cart.png" >
+                    </span>
+                    <span class="cart-tx2">10</span><br> 
+                    <span class="sml-tx">CHECKOUT</span>
+                  <% end %>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container">
+    <div class="row">
+      <div class="navbg-remove bordr-top">
+        <nav role="navigation" class="navbar navbar-default">
+          <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button data-target="#bs-megadropdown-tabs" data-toggle="collapse" class="navbar-toggle collapsed" type="button" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div id="bs-megadropdown-tabs" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+             <ul class="nav navbar-nav">
+              <li><%= link_to "HOME", spree.root_path %></li>
+              <li><a href="#">GALLERY</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">PRODUCT CATEGORY <span class="caret"></span></a>       
+                <ul class="dropdown-menu" role="menu">
+                <% Spree::Taxonomy.first.root.children.each do |taxon|%>
+                  <li>
+                    <%= link_to seo_url(taxon) do %>
+                      <i class="fa fa-angle-double-right ftr-arw-sew"></i>
+                      <%= taxon.name %>
+                    <% end %>
+                  </li>
+                <% end %>
+                </ul>                
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">HOW TO BUY <span class="caret"></span></a>       
+                <ul class="dropdown-menu" role="menu">
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Showrooms</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Sales Representatives</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Internet Retailers</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Request A Catalog</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Custom Product</a></li>
+                </ul>                
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">DOWNLOADS <span class="caret"></span></a>        
+                <ul class="dropdown-menu" role="menu">
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Online Catalogs</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Request A Catalog</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Spec Sheets</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Instructions</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Hi-Res Images</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> IES Files</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Videos</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Generate A BOM</a></li>
+                </ul>                
+              </li>
+              <li><a href="#">MEDIA </a></li>
+              <li><a href="#">PARTNERS   </a></li>
+              <li><a href="#">VIDEOS</a></li>
+              <li><a href="#">NEWS</a></li>
+              <li><a href="#">ABOUT US</a></li>
+              <li><a href="#">CONTACT</a></li>
+            </ul>
+          </div>
+          </div>
+        </nav>
+        <div>
+      </div>
+    </div>
+    </div>
+  </div>
+<!-- <div id="spree-header">
+  <header id="header" data-hook>
+    <div class="container">
+      <div class="row">
+        <figure id="logo" class="col-md-4" data-hook>
+          <%#= logo %>
+        </figure>
+        <%#= render :partial => 'spree/shared/nav_bar' %>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <%#= render :partial => 'spree/shared/main_nav_bar' if store_menu? %>
+  </div>
+</div>
+ -->
+<script>
+  $(document).ready(function(){
+    $(".dropdown").hover(            
+    function() {
+      $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+      $(this).toggleClass('open');        
+    },
+    function() {
+      $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+      $(this).toggleClass('open');       
+    }
+    );
+  });
+</script>
