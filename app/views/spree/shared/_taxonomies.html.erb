@@ -1,0 +1,24 @@
+<% max_level = Spree::Config[:max_level_in_taxons_menu] || 1 %>
+
+<nav id="taxonomies" class="sidebar-item" data-hook>
+	<% count = 0 %>
+  <% @taxonomies.each do |taxonomy| %>
+  	<% count += 1 %>
+    <% cache [I18n.locale, taxonomy, max_level, @taxon] do %>
+		  <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="<%=taxonomy.name%>">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#accord-<%=count%>" aria-expanded="false" aria-controls="accord-<%=count%>">
+              <%=taxonomy.name %>
+            </a>
+          </h4>
+        </div>
+        <div id="accord-<%=count%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="<%=taxonomy.name%>">
+          <div class="">
+            <%= taxons_tree(taxonomy.root, @taxon, max_level) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</nav>

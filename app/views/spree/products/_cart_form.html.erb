@@ -1,0 +1,86 @@
+<%= form_for :order, :url => populate_orders_path do |f| %>
+  <div class="row" id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+    <% if @product.variants_and_option_values(current_currency).any? %>
+      <div id="product-variants" class="col-md-6">
+        <h3 class="product-section-title"><%= Spree.t(:variants) %></h3>
+        <ul class="list-group prd-details-price-outer">
+          <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>
+            <li>
+              <%= radio_button_tag "variant_id", variant.id, index == 0, 'data-price' => variant.price_in(current_currency).money  %>
+              <%= label_tag "variant_id_#{ variant.id }" do %>
+                <span class="variant-description">
+                  <%= variant_options variant %>
+                </span>
+                <% if variant_price variant %>
+                  <span class="price diff"><%= variant_price variant %></span>
+                <% end %>
+                <% unless variant.can_supply? %>
+                  <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+                <% end %>
+              <% end %>
+            </li>
+          <% end%>
+        </ul>
+      </div>
+    <% else %>
+      <%= hidden_field_tag "variant_id", @product.master.id %>
+    <% end %>
+
+    <% if @product.price_in(current_currency) and !@product.price.nil? %>
+      <div data-hook="product_price" class="col-md-8">
+        <div id="product-price">
+          <div>
+            <span class="lead price selling" itemprop="price">
+              <%= display_price(@product) %>
+            </span>
+            <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
+          </div>
+          <p class="free-ship">free shipping <span>on most orders</span></p>
+          <div class="rating hidden-sm">
+            <a href="product-detail.html">
+               <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+               </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+               </i><i class="fa fa-star"></i>
+            </a>
+          </div>
+          <div class="media-body">
+            <p>
+            <a class="btn btn-xs btn-default pnit" href="#"><i class="fa fa-pinterest"></i> Pinterest </a>
+            <a class="btn btn-xs btn-default" href="#"><span class="glyphicon glyphicon-heart"></span> Favorite</a>
+            <a class="btn btn-xs btn-default frnd" href="#"><i class="fa fa-paper-plane"></i> Share with a friend</a>
+            </p>
+          </div>
+          <% if @product.master.can_supply? %>
+            <link itemprop="availability" href="https://schema.org/InStock" />
+          <% elsif @product.variants.empty? %>
+            <br />
+            <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+          <% end %>
+        </div>
+
+        <div class="add-to-cart">
+          <div class="input-group item-quantity">
+            <strong class="free-ship">Quantity </strong>
+            <%= number_field_tag :quantity, 1, :class => 'title form-control', :min => 1 %>
+          </div>
+          <br/>
+          <div class="input-group buy-cart-bttn">
+            <span class="input-group-btn">
+              <%= button_tag :class => 'btn btn-hot text-uppercase btn-lg', :id => 'add-to-cart-button', :type => :submit do %>
+                <%= Spree.t(:add_to_cart) %>
+              <% end %>
+            </span>
+            <span class="input-group-btn">
+              <span class="wisbt"><button class="btn btn-hot-wish text-uppercase btn-lg wishlist-btn" type="button"> Add to wishlist </button></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div id="product-price">
+        <br>
+        <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

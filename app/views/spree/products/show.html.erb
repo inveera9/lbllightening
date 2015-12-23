@@ -1,0 +1,126 @@
+<% @body_id = 'product-details' %>
+
+<% cache [I18n.locale, current_currency, @product, @product.possible_promotions] do %>
+  <div data-hook="product_show" itemscope itemtype="https://schema.org/Product" class="prd-details">
+    <div class="row">
+      <div class="col-md-4" data-hook="product_left_part">
+        <div data-hook="product_left_part_wrap">
+          <div id="product-images" data-hook="product_images">
+            <div id="main-image" class="panel panel-default" data-hook>
+              <div class="panel-body text-center" id="surround">
+                <%= render :partial => 'image' %>
+                <div id="slider1">
+              <div class="thumbelina-but horiz left disabled"><i class="fa fa-chevron-left"></i></div>
+              <div style="position:absolute;overflow:hidden;width:100%;height:100%;"><ul class="thumbelina" style="left: 0px;">
+                <li style="display: inline-block;"><img height="69" width="69" data-cloudzoom="useZoom:'.cloudzoom', image:'/assets/lg1.jpg' " src="/assets/lg1.jpg" class="cloudzoom-gallery"></li>
+                <li style="display: inline-block;"><img height="69" width="69" data-cloudzoom="useZoom:'.cloudzoom', image:'/assets/lg2.jpg' " src="/assets/lg2.jpg" class="cloudzoom-gallery"></li>
+                <li style="display: inline-block;"><img height="69" width="69" data-cloudzoom="useZoom:'.cloudzoom', image:'/assets/lg1.jpg' " src="/assets/lg1.jpg" class="cloudzoom-gallery"></li>
+                <li style="display: inline-block;"><img height="69" width="69" data-cloudzoom="useZoom:'.cloudzoom', image:'/assets/lg2.jpg' " src="/assets/lg2.jpg" class="cloudzoom-gallery"></li>
+                <li style="display: inline-block;"><img height="69" width="69" data-cloudzoom="useZoom:'.cloudzoom', image:'/assets/lg1.jpg' " src="/assets/lg1.jpg" class="cloudzoom-gallery"></li>
+                <li style="display: inline-block;"><img height="69" width="69" data-cloudzoom="useZoom:'.cloudzoom', image:'/assets/lg2.jpg' " src="/assets/lg2.jpg" class="cloudzoom-gallery"></li>        
+              </ul></div>
+              <div class="thumbelina-but horiz right"><i class="fa fa-chevron-right"></i></div>
+            </div>
+              </div>
+            </div>
+            <!-- <div id="thumbnails" data-hook>
+              <%#= render :partial => 'thumbnails' %>
+            </div> -->
+          </div>
+
+          <div data-hook="product_properties">
+            <%= render :partial => 'properties' %>
+          </div>
+
+          <div data-hook="promotions">
+            <%= render :partial => 'promotions' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8" data-hook="product_right_part">
+        <div data-hook="product_right_part_wrap">
+          <div id="product-description" data-hook="product_description">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12" data-hook="product_right_part_wrap">
+              <div class="prd-details-title">
+                <div><%= @product.name %></div>
+                <p class="prd-details-sub-title">from <%= @product.taxons.first.name.capitalize %></p>
+              </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-sx-12">
+              <div class="prd-details-price-outer">
+                <div id="cart-form" data-hook="cart_form">
+                  <%= render :partial => 'cart_form' %>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12">
+              <div class="detail-ryt-end-outer">
+                <div class="drop-lis-fom">
+                  <strong class="time-lead">Lamp Color </strong>
+                    <select class="form-control" name="products">
+                      <option>04- Black Lacquer</option>
+                      <option>03- White Lacquer</option>
+                      <option>02- White Lacquer</option>
+                      <option>01- White Lacquer</option>
+                   </select>
+                </div>
+                <div class="drop-lis-fom dolr">
+                  <strong class="time-lead"> Lamp Type </strong>
+                    <select class="form-control" name="products">
+                      <option>INC- Incandescent</option>
+                      <option>CFE- Compact fluorescent</option>
+                   </select>
+                </div>
+                <div class="drop-lis-fom dolr">
+                  <strong class="time-lead">Lead Time </strong>
+                  <p>In Stock models ship within 1-3 days. All other models ship within 7-9 weeks.</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+<% end %>
+<div class="row">
+    <div class="col-lg-9 col-md-9 col-sm-12 col-sx-12">
+      <div class="tabs-bg-outer">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#home">Description</a></li>
+          <li><a data-toggle="tab" href="#menu1">Design</a></li>
+          <li><a data-toggle="tab" href="#menu2">Reviews</a></li>
+          <li><a data-toggle="tab" href="#menu3">Q&A</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="home" class="tab-pane fade in active">
+            <div class="well" itemprop="description" data-hook="description">
+              <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
+            </div>
+          </div>
+          <div id="menu1" class="tab-pane fade">
+            <p>Coming soon.</p>
+          </div>
+          <div id="menu2" class="tab-pane fade">
+            <p>Coming soon.</p>
+          </div>
+          <div id="menu3" class="tab-pane fade">
+            <p>Coming soon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type = "text/javascript">
+  //CloudZoom.quickStart();
+  // Initialize the slider.
+  $(function(){
+    $('#slider1').Thumbelina({
+      $bwdBut:$('#slider1 .left'), 
+      $fwdBut:$('#slider1 .right')
+    });
+  }); 
+</script>

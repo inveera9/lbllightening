@@ -71,7 +71,7 @@
   </div>
 </header>
 <div class="container">
-    <div class="row">
+    <div class="">
       <div class="navbg-remove bordr-top">
         <nav role="navigation" class="navbar navbar-default">
           <div class="container-fluid">
@@ -93,15 +93,17 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">PRODUCT CATEGORY <span class="caret"></span></a>       
                 <ul class="dropdown-menu" role="menu">
-                <% Spree::Taxonomy.first.root.children.each do |taxon|%>
-                  <li>
-                    <%= link_to seo_url(taxon) do %>
-                      <i class="fa fa-angle-double-right ftr-arw-sew"></i>
-                      <%= taxon.name %>
-                    <% end %>
-                  </li>
+                <% Spree::Taxonomy.all.each do |taxonomy| %>
+                  <% taxonomy.root.children.each do |taxon|%>
+                    <li>
+                      <%= link_to seo_url(taxon) do %>
+                        <i class="fa fa-angle-double-right ftr-arw-sew"></i>
+                        <%= taxon.name.capitalize %>
+                      <% end %>
+                    </li>
+                  <% end %>
                 <% end %>
-                </ul>                
+                </ul>               
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">HOW TO BUY <span class="caret"></span></a>       
