@@ -22,16 +22,18 @@ module Spree
 
     def checkout_progress
       states = @order.checkout_steps
+      step = 0
       items = states.map do |state|
+        step += 1
         text = Spree.t("order_state.#{state}").titleize
 
-        css_classes = []
+        css_classes = ["stepwizard-step"]
         current_index = states.index(@order.state)
         state_index = states.index(state)
 
         if state_index < current_index
           css_classes << 'completed'
-          text = link_to text, checkout_state_path(state)
+          #text = link_to text, checkout_state_path(state)
         end
 
         css_classes << 'next' if state_index == current_index + 1
@@ -41,12 +43,13 @@ module Spree
         # No more joined classes. IE6 is not a target browser.
         # Hack: Stops <a> being wrapped round previous items twice.
         if state_index < current_index
-          content_tag('li', text, class: css_classes.join(' '))
+          content_tag('li', "<a href='/checkout/#{state}' class='btn btn-circle btn-default'>#{step}</a><p>#{text}</p>".html_safe, class: css_classes.join(' '))
         else
-          content_tag('li', content_tag('a', text), class: css_classes.join(' '))
+          #content_tag('li', content_tag('a', 2, class: "btn btn-circle btn-default"), class: css_classes.join(' '))
+          content_tag('li', "<a class='btn btn-circle btn-default'>#{step}</a><p>#{text}</p>".html_safe, class: css_classes.join(' '))
         end
       end
-      content_tag('ul', raw(items.join("\n")), class: 'progress-steps nav nav-pills nav-justified', id: "checkout-step-#{@order.state}")
+      content_tag('ul', raw(items.join("\n")), class: 'stepwizard-row setup-panel', id: "checkout-step-#{@order.state}")
     end
 
     def flash_messages(opts = {})

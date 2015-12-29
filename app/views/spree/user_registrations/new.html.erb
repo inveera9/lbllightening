@@ -1,0 +1,32 @@
+<% @body_id = 'signup' %>
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
+<div class="ordr-smry">
+  <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+    <div class="ordr-txt"><%= Spree.t(:new_customer)%></div>
+    <div class="">
+        <div id="new-customer" class="panel-body" data-hook="login">
+            <%= form_for resource, :as => :spree_user, :url => spree.registration_path do |f| %>
+              <div data-hook="signup_inside_form">
+                <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
+                <p>
+                  <%= f.submit "Create My Account", :class => 'btn btn-hot-wish text-uppercase btn-lg' %></p>
+                  <p>OR</p>
+                  <div class="login-forgot">
+                    <p><%= link_to Spree.t(:login_as_existing), spree.login_path %></p>
+                  </div>
+              </div>
+            <% end %>
+            <div data-hook="login_extras"></div>
+        </div>
+    </div>
+  </div>
+  <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+    <div class="ordr-txt">Advantages of Sign Up</div>
+    <div class="advantages-login">
+      <p>Manage your Orders<br>
+        <span>Easily Track Orders, Hassle free Returns</span></p>
+      <p>Make Informed Decisions<br><span>Get Relevant Alerts and Recommendations</span></p>
+      <p>Engage Socially<br><span>With wishlists, Reviews, Ratings</span></p>
+    </div>
+  </div>
+</div>

@@ -333,6 +333,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemerchant
   awesome_print
   byebug
   coffee-rails (~> 4.1.0)

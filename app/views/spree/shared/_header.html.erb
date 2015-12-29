@@ -20,7 +20,7 @@
     </div>
   </div>
 </section>
-<header class="head-marg">
+<header class="head-marg" id="header" data-hook>
   <div class="container">
     <div class="row">
       <div class="srch-lbl">
@@ -40,10 +40,17 @@
             <ul class="list-inline text-right">
               <li><a href="#">FREE SHIPPING!<br> <span class="sml-tx">free shipping on most order</span></a></li>
               <li class="dropdown">
-                <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">ACCOUNT<br> <span class="sml-tx">(sign in)</span> <span class="caret"></span></a>
+                <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">ACCOUNT<br> <span class="sml-tx">(<%= spree_current_user.present? ? 'sign out' : 'sign in' %>)</span> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                <li><%= link_to "Sign in", login_path %></li>
-                <li><%= link_to "Register", signup_path %></li>
+                 <% if spree_current_user.present? %>
+                  <li>
+                    <%= link_to "Logout", destroy_spree_user_session_path %>
+                  </li>
+                  <li><%= link_to "My Account", account_path %></li>
+                <% else %> 
+                  <li><%= link_to "Sign in", login_path %></li>
+                  <li><%= link_to "Register", signup_path %></li>
+                <% end %>
                 </ul>
               </li>
               <li>
@@ -90,29 +97,47 @@
              <ul class="nav navbar-nav">
               <li><%= link_to "HOME", spree.root_path %></li>
               <li><a href="#">GALLERY</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">PRODUCT CATEGORY <span class="caret"></span></a>       
-                <ul class="dropdown-menu" role="menu">
-                <% Spree::Taxonomy.all.each do |taxonomy| %>
-                  <% taxonomy.root.children.each do |taxon|%>
-                    <li>
-                      <%= link_to seo_url(taxon) do %>
-                        <i class="fa fa-angle-double-right ftr-arw-sew"></i>
-                        <%= taxon.name.capitalize %>
-                      <% end %>
-                    </li>
-                  <% end %>
-                <% end %>
-                </ul>               
-              </li>
-              <li class="dropdown">
+              <li class="dropdown mega-dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">BRANDS <span class="caret"></span>
+                </a>       
+                <div class="dropdown-menu mega-dropdown-menu">
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div id="men" class="tab-pane active">
+                        <% Spree::Taxonomy.all.each do |taxonomy| %>
+                          <ul class="nav-list list-none">
+                            <li>
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <h1 class="ftr-titl-mnu"><%= taxonomy.name %>
+                                </h1>
+                                <% taxonomy.root.children.each_slice(12) do |batch|%>
+                                  <ul class="ftr-ul brand-nav col-md-6 col-sm-12">
+                                    <% batch.each do |taxon|%>
+                                    <li>
+                                      <%= link_to seo_url(taxon) do %>
+                                        <i class="fa fa-angle-double-right ftr-arw-sew"></i>
+                                        <%= taxon.name.capitalize %>
+                                      <% end %>
+                                    </li>
+                                    <% end %>
+                                  </ul>
+                                <% end %>
+                              </div>
+                            </li>
+                          </ul>
+                        <% end %>
+                    </div> 
+                  </div>                 
+                </div>        
+              </li
+>              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">HOW TO BUY <span class="caret"></span></a>       
-                <ul class="dropdown-menu" role="menu">
-                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Showrooms</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Sales Representatives</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Internet Retailers</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Request A Catalog</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Custom Product</a></li>
+                <ul class="dropdown-menu ftr-ul brand-nav" role="menu">
+                  <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Showrooms</a></li>
+                  <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Sales Representatives</a></li>
+                  <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Internet Retailers</a></li>
+                  <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Request A Catalog</a></li>
+                  <li><a href="#"><i class="fa fa-angle-double-right ftr-arw-sew"></i> Custom Product</a></li>
                 </ul>                
               </li>
               <li class="dropdown">
@@ -143,33 +168,31 @@
     </div>
     </div>
   </div>
-<!-- <div id="spree-header">
-  <header id="header" data-hook>
-    <div class="container">
-      <div class="row">
-        <figure id="logo" class="col-md-4" data-hook>
-          <%#= logo %>
-        </figure>
-        <%#= render :partial => 'spree/shared/nav_bar' %>
-      </div>
-    </div>
-  </header>
-  <div class="container">
-    <%#= render :partial => 'spree/shared/main_nav_bar' if store_menu? %>
-  </div>
-</div>
- -->
+
 <script>
   $(document).ready(function(){
-    $(".dropdown").hover(            
-    function() {
-      $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-      $(this).toggleClass('open');        
-    },
-    function() {
-      $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-      $(this).toggleClass('open');       
+    var width = $(window).width();
+    if (width < 768){
+      $(".dropdown").onclick(function() {
+        $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+        $(this).toggleClass('open');        
+      },
+      function() {
+        $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+        $(this).toggleClass('open');       
+       }
+      );
     }
-    );
+    else {
+      $(".dropdown").hover(function() {
+        $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+        $(this).toggleClass('open'); 
+      },
+      function() {
+        $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+        $(this).toggleClass('open');
+      }
+      );
+    }
   });
 </script>

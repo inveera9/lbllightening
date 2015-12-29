@@ -56,7 +56,8 @@
                       <div><%= display_price(product) %></div>
                       <div class="add-color-chng">
                         <i class="fa fa-shopping-cart"></i>
-                        <a href="#" class="hidden-sm"> Add to cart</a><p></p>
+                        <%= link_to "Add to cart", url, class: "hidden-sm" %>
+                        <p></p>
                       </div>
                     </div>
                  </div>

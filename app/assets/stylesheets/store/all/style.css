@@ -368,8 +368,8 @@ body{
 }
 .cart-tx2{
 	position: absolute;
-	right: 17px;
-    top: 4px;
+	right: 21px;
+  top: 6px;
 	color:#fff !important;
 }
 .sml-tx{
@@ -423,7 +423,7 @@ body{
 .mega-dropdown-menu {
 	line-height:27px;
   padding: 0px 0px 35px;
-  width: 50%;
+  width: 100%;
 }
 .navbg-remove .navbar-default{
 	background:none;
@@ -762,6 +762,10 @@ a.socialIcon:hover, .socialHoverClass {
 .ftr-ul a{
 	 color:#666;
 } 
+.brand-nav li{
+  border-bottom: solid 1px #f1f1f1;
+  margin-right: 15px;
+}
 .ftr-titl {
      font-size: 15px;
      color: #000;
@@ -933,9 +937,8 @@ a.socialIcon:hover, .socialHoverClass {
 	margin-top:12px;
 }
 .buy-cart-bttn .btn{
-    margin: 4px 15px 4px 0px;
+  margin: 4px 15px 4px 0px;
 	border-radius:0;
-	width:40%;
 	font-size:11pt;
 }
 
@@ -944,8 +947,8 @@ a.socialIcon:hover, .socialHoverClass {
 }
    
 .buy-cart-bttn .btn-hot {
-color: #fff;
-	background:#4ac9d7;
+  color: #fff;
+  background:#4ac9d7;
 }
 .buy-cart-bttn .btn-hot:hover{
 color: #fff;
@@ -956,8 +959,8 @@ color: #fff;
 	background:#ff8500;
 }
 .buy-cart-bttn .btn-hot-wish:hover {
-color: #fff;
-	background:#eb7b02;
+  color: #fff;
+  background:#eb7b02;
 }
 .tabs-bg-outer {
 	margin-top:25px;
@@ -1548,5 +1551,68 @@ color: #fff;
 .thumbnail .caption{
   padding:0 9px;
 }
-
+#btn-hot-wish{
+  width: 100% !important;
+  margin-left: 10px;
+}
+#home .well{
+  background-color: #f5f5f5;
+  border: none !important;
+}
+.wishlist-item-btn{
+  margin-left: 10px;
+}
+.wisbt{
+  margin-left: 20px;
+}
+#quantity{
+  width: 40%;
+  border-radius: 0;
+}
+.cart-item-quantity input[type=number]{
+  width: 40%;
+}
+.btn-hot {
+  color: #fff;
+  background:#4ac9d7;
+  border-radius: 0;
+  font-size: 11pt;
+}
+.btn-hot:hover {
+  background: #38bac8 none repeat scroll 0 0;
+  color: #fff;
+}
+.btn-hot-wish {
+  color: #fff;
+  background:#ff8500;
+  border-radius: 0;
+  font-size:11pt;
+}
+.btn-hot-wish:hover {
+  color: #fff;
+  background:#eb7b02;
+}
+#update-button{
+  margin-right: 10px;
+}
+.cart-item-description{
+  width: 40%;
+}
+.cart-item-price, .cart-item-total {
+  color: #666 !important;
+}
+.cart-item-delete a{
+  color: #ff8500;
+}
+.stepwizard-row li.active a{
+  background-color: #ff8500;
+  border: 1px solid #ff8500;
+  color: #fff;
+}
+#shipping, #billing{
+  border-radius: 0;
+}
 /* Custom CSS start */
+.free-shipping .dropdown-menu{
+ margin-top:0;
+}

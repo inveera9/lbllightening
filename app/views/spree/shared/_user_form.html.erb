@@ -1,0 +1,19 @@
+<div class="login-tx registration-tx">
+  <strong class="registration-tx">Email Address:</strong>
+  <div class="input-group col-md-8 col-xs-12">      
+    <%= f.email_field :email, :class => 'form-control'%>
+  </div>
+</div>
+<div class="login-tx registration-tx">
+  <strong class="registration-tx">Password:</strong>
+  <div class="input-group col-md-8 col-xs-12">      
+    <%= f.password_field :password, :class => 'form-control'%>
+  </div>
+</div>
+<div class="login-tx registration-tx">
+  <strong class="registration-tx">Confirm Password:</strong>
+  <div class="input-group col-md-8 col-xs-12">      
+    <%= f.password_field :password_confirmation, :class => 'form-control' %>    
+  </div>
+</div>  
+<div data-hook="signup_below_password_fields"></div>

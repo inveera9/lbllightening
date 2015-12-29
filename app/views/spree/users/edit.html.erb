@@ -1,0 +1,17 @@
+<div class="ordr-smry">
+  <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+    <div class="ordr-txt"><%= Spree.t(:editing_user)%></div>
+    <div class="">
+      <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
+      
+      <%= form_for Spree::User.new, :as => @user, :url => spree.user_path(@user), :method => :put do |f| %>
+        <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
+        <p>
+          <%= f.submit Spree.t(:update), :class => 'btn btn-hot-wish text-uppercase btn-lg' %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+  </div>
+</div>

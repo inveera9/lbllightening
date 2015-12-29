@@ -1,0 +1,22 @@
+<%= form_for Spree::User.new, :as => :spree_user, :url => spree.create_new_session_path do |f| %>
+  <div class="login-tx registration-tx">
+    <strong class="registration-tx">Email:</strong>
+    <div class="input-group col-md-8 col-xs-12">      
+      <%= f.email_field :email, :class => 'form-control', :tabindex => 1, autofocus: true %>
+    </div>
+  </div>
+  <div class="login-tx registration-tx">
+    <strong class="registration-tx">Password:</strong>
+    <div class="input-group col-md-8 col-xs-12">      
+      <%= f.password_field :password, :class => 'form-control', :tabindex => 2 %>
+    </div>
+  </div>
+  <div class="login-forgot">
+    <p>
+      <%= f.check_box :remember_me, :tabindex => 3 %>
+      <%= f.label :remember_me, Spree.t(:remember_me) %>
+    </p>
+  </div>
+
+  <p><%= f.submit Spree.t(:login), :class => 'btn btn-hot-wish text-uppercase btn-lg', :tabindex => 4 %></p>
+<% end %>

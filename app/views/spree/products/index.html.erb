@@ -1,27 +1,78 @@
-<% if "spree/products" == params[:controller] && @taxon || !@taxonomies.empty? %>
-  <% content_for :sidebar do %>
-    <div data-hook="homepage_sidebar_navigation">
-      <% if "spree/products" == params[:controller] && @taxon %>
-        <%= render :partial => 'spree/shared/filters' %>
-      <% else %>
-        <%= render :partial => 'spree/shared/taxonomies' %>
-      <% end %>
+<div class="">
+   <!---start category-->
+   <div class="bcum-im">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12">
+          <img class="img-responsive" src="/assets/prbnr.jpg">
+        </div>
+      </div>
+   </div>
+   <div class="clearfix"></div>
+   <div class="row margin-top-10">
+      <div class="col-lg-3 col-md-3 col-sm-12 col-sx-12">
+        <div class="main-colps">
+          <div data-hook="taxon_sidebar_navigation">
+            <div id="main">
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <h4>Brands</h4>
+                <% if "spree/products" == params[:controller] && @taxon || !@taxonomies.empty? %>
+                  <div class="panel panel-default">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                      <div data-hook="homepage_sidebar_navigation">
+                        <% if "spree/products" == params[:controller] && @taxon %>
+                          <%= render :partial => 'spree/shared/filters' %>
+                        <% else %>
+                          <%= render :partial => 'spree/shared/taxonomies' %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 col-sx-12">
+        <div class="well well-sm">
+          <div class="row">
+            <div class="col-lg-7 col-md-7 col-sm-12 col-sx-12">
+              <strong class="view-type">All Products</strong>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-sx-12">
+              <div class="form-group">
+                <label for="products" class="col-md-4 control-label text-right">
+                  <strong class="view-type">Sort By: </strong>
+                </label>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                  <select class="form-control" name="products">
+                    <option>Recommended</option>
+                    <option>Top Rated</option>
+                    <option>Price (Low to High)</option>
+                    <option>Price (High to Low)</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+         </div>
+         </div>
+          <% if params[:keywords] %>
+            <div data-hook="search_results">
+              <% if @products.empty? %>
+                <h6 class="search-results-title"><%= Spree.t(:no_products_found) %></h6>
+              <% else %>
+                <%= render :partial => 'spree/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
+              <% end %>
+            </div>
+          <% else %>
+            <div data-hook="homepage_products">
+              <% cache(cache_key_for_products) do %>
+                <%= render :partial => 'spree/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
+              <% end %>
+            </div>
+          <% end %>
+      </div>
     </div>
-  <% end %>
-<% end %>
+  </div>
 
-<% if params[:keywords] %>
-  <div data-hook="search_results">
-    <% if @products.empty? %>
-      <h6 class="search-results-title"><%= Spree.t(:no_products_found) %></h6>
-    <% else %>
-      <%= render :partial => 'spree/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
-    <% end %>
-  </div>
-<% else %>
-  <div data-hook="homepage_products">
-    <% cache(cache_key_for_products) do %>
-      <%= render :partial => 'spree/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
-    <% end %>
-  </div>
-<% end %>

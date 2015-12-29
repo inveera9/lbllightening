@@ -60,7 +60,7 @@
 
         <div class="add-to-cart">
           <div class="input-group item-quantity">
-            <strong class="free-ship">Quantity </strong>
+            <strong class="free-ship">Quantity </strong><br>
             <%= number_field_tag :quantity, 1, :class => 'title form-control', :min => 1 %>
           </div>
           <br/>
@@ -70,8 +70,8 @@
                 <%= Spree.t(:add_to_cart) %>
               <% end %>
             </span>
-            <span class="input-group-btn">
-              <span class="wisbt"><button class="btn btn-hot-wish text-uppercase btn-lg wishlist-btn" type="button"> Add to wishlist </button></span>
+            <span class="input-group-btn wishlist-item-btn">
+              <span class="wisbt"><button class="btn btn-hot-wish text-uppercase btn-lg wishlist-btn" id="wishlist" type="button"> Add to wishlist </button></span>
             </span>
           </div>
         </div>
