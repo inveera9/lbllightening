@@ -6,9 +6,10 @@
   	<% count += 1 %>
     <% cache [I18n.locale, taxonomy, max_level, @taxon] do %>
 		  <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="<%=taxonomy.name%>">
+        <div class="panel-heading category-tab" role="tab" id="<%=taxonomy.name%>">
           <h4 class="panel-title">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#accord-<%=count%>" aria-expanded="false" aria-controls="accord-<%=count%>">
+            <a href="javascript:void(0)">
+              <i class="fa fa-angle-down bottom-arrow-catgory"></i>
               <%=taxonomy.name %>
             </a>
           </h4>
@@ -22,3 +23,39 @@
     <% end %>
   <% end %>
 </nav>
+<% if params[:controller] =="spree/taxons" && params[:action] == "show" %>
+  <script type="text/javascript">
+    var tab = window.location.pathname.split("/")[2].replace("-"," ")
+    $("#taxonomies").children().each(function(index, category){
+      var selected_category = $(category).find('h4 a').text().trim().toLowerCase();
+      if(tab == selected_category){
+        $(category).find('div.category-tab').addClass('active-category-tab')
+        $($(category).find('div.category-tab').parent().children()[1]).show()
+      }
+    });  
+  </script>
+<% end %>
+<script type="text/javascript">
+function angleAnimation(angleselector){
+  if(angleselector.find('i').hasClass('fa-angle-down')){
+    angleselector.find('i').addClass('fa-angle-up');
+    angleselector.find('i').removeClass('fa-angle-down');
+  }else{
+    angleselector.find('i').removeClass('fa-angle-up');
+    angleselector.find('i').addClass('fa-angle-down');
+  }
+}
+$(document).ready(function(){
+  $(".category-tab").click(function(){
+    if ($(this).hasClass('active-category-tab')){
+      $($(this).parent().children()[1]).hide();
+      $(this).removeClass('active-category-tab');
+      angleAnimation($(this))
+    }else{
+      angleAnimation($(this))
+      $(this).addClass('active-category-tab');
+      $($(this).parent().children()[1]).show();  
+    }
+  })
+});
+</script>
