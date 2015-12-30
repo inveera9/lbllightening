@@ -40,10 +40,13 @@
     <% end %>
   </div>
 </div>
+<div class="clearfix"></div>
+<hr>
+<%= render partial: 'spree/shared/footer_top' %>
 
 <script>
-  Spree.current_order_id = "<%= @order.number %>"
-  Spree.current_order_token = "<%= @order.guest_token %>"
+  //Spree.current_order_id = "<%= @order.number %>"
+  //Spree.current_order_token = "<%= @order.guest_token %>"
 </script>
 
 <% if I18n.locale != :en %>

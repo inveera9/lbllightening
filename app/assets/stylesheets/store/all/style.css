@@ -746,6 +746,7 @@ a.socialIcon:hover, .socialHoverClass {
 	color:#666;
 	font-size:10pt;
 	margin-top:10px;
+  padding-bottom: 10px;
 }
 .ftr-bordr{
 	border-bottom:solid 1px #dfdfdf;
@@ -1612,6 +1613,7 @@ color: #fff;
 #shipping, #billing{
   border-radius: 0;
 }
+a {outline: none;}
 /* Custom CSS start */
 .free-shipping .dropdown-menu{
  margin-top:0;
