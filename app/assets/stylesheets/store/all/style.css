@@ -1613,10 +1613,8 @@ color: #fff;
 #shipping, #billing{
   border-radius: 0;
 }
-a {outline: none;}
-/* Custom CSS start */
 .free-shipping .dropdown-menu{
- margin-top:0;
+  margin-top:0;
 }
 .bottom-arrow-catgory{
   font-size: 20pt;
@@ -1625,3 +1623,7 @@ a {outline: none;}
   vertical-align: middle;
   padding-right: 5px;
 }
+.list-group:first-child{
+  margin-top: 5px;
+}
+/* Custom CSS start */
