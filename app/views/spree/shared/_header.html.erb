@@ -43,10 +43,11 @@
                 <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">ACCOUNT<br> <span class="sml-tx">(<%= spree_current_user.present? ? 'sign out' : 'sign in' %>)</span> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                  <% if spree_current_user.present? %>
-                  <li>
-                    <%= link_to "Logout", destroy_spree_user_session_path %>
-                  </li>
                   <li><%= link_to "My Account", account_path %></li>
+                  <li>
+                    <%= link_to "My Wishlist", wishlists_path %>
+                  </li>
+                  <li><%= link_to "Logout", destroy_spree_user_session_path %></li>
                 <% else %> 
                   <li><%= link_to "Sign in", login_path %></li>
                   <li><%= link_to "Register", signup_path %></li>

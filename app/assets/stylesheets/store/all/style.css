@@ -765,7 +765,6 @@ a.socialIcon:hover, .socialHoverClass {
 } 
 .brand-nav li{
   border-bottom: solid 1px #f1f1f1;
-  margin-right: 15px;
 }
 .ftr-titl {
      font-size: 15px;
@@ -1515,6 +1514,28 @@ color: #fff;
 }
 /*====checkout end===========*/
 
+ /*==== pagination start ===========*/
+.category-pagin{
+ margin:0px;
+}
+.category-pagin .pagination>li>a, .pagination>li>span{
+ border:none;
+ padding: 6px 8px;
+ color:#000;
+}
+.category-pagin .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+ background:none;
+ color:#ff8500;
+ font-size:15px;
+ font-weight:bold;
+}
+.category-pagin .pagination>li>a:hover, .pagination>li>span{
+ background:none;
+}
+.pagination li.prev>a, .pagination li.next_page>a{
+  color: #666;
+}
+/* Pagination end */
 /* Custom CSS start */
 
 .list-group-item{
@@ -1545,9 +1566,6 @@ color: #fff;
 .title-gray15 p{
   color:#666 !important; 
   font-size: 12pt;
-}
-.list-group{
-  margin-left: 12px;
 }
 .thumbnail .caption{
   padding:0 9px;
@@ -1633,5 +1651,13 @@ color: #fff;
 .price-filter{
   color: #ff8500 !important;
   font-size: 12pt !important;
+}
+.wishlists-ul{
+  list-style-type: none;
+  font-size: 11pt;
+  padding: 0;
+}
+.container{
+  margin-bottom: 10px;
 }
 /* Custom CSS start */

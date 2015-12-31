@@ -1,0 +1,10 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-sx-12">
+  <h4><%= Spree.t(:wishlists) %></h4>
+  <%= content_tag :ul, class: 'wishlists-ul' do %>
+    <% @wishlists.each do |wishlist| %>
+      <%= content_tag :li do %>
+        <%= link_to("<i class='fa fa-angle-double-right ftr-arw-sew'></i> #{wishlist.name}".html_safe, wishlist) %> - <%= wishlist.is_private ? Spree.t(:private) : Spree.t(:public) %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
