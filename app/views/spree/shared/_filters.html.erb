@@ -10,13 +10,13 @@
         <div class="my-check-outer">
           <% labels.each do |nm,val| %>
             <% label = "#{filter[:name]}_#{nm}".gsub(/\s+/,'_') %>
-            <div class=" my-check">
+            <div class=" my-check ">
               <input type="checkbox"
                      id="<%= label %>"
                      name="search[<%= filter[:scope].to_s %>][]"
                      value="<%= val %>"
                      <%= params[:search] && params[:search][filter[:scope]] && params[:search][filter[:scope]].include?(val.to_s) ? "checked" : "" %> class="css-checkbox" />
-              <label class="nowrap css-label" for="<%= label %>"> <%= nm %> </label>
+              <label class="nowrap css-label price-filter" for="<%= label %>"> <%= nm %> </label>
             </div>
           <% end %>
         </div>

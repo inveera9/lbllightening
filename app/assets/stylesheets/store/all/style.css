@@ -1626,4 +1626,12 @@ color: #fff;
 .list-group:first-child{
   margin-top: 5px;
 }
+.price{
+  color: #ff8500 !important;
+  font-size: 13pt !important;
+}
+.price-filter{
+  color: #ff8500 !important;
+  font-size: 12pt !important;
+}
 /* Custom CSS start */
