@@ -9,7 +9,7 @@
         <div class="panel-heading category-tab" role="tab" id="<%=taxonomy.name%>">
           <h4 class="panel-title">
             <a href="javascript:void(0)">
-              <i class="fa fa-angle-down bottom-arrow-catgory"></i>
+              <i class="fa fa-angle-up bottom-arrow-catgory"></i>
               <%=taxonomy.name %>
             </a>
           </h4>
@@ -29,8 +29,11 @@
     $("#taxonomies").children().each(function(index, category){
       var selected_category = $(category).find('h4 a').text().trim().toLowerCase();
       if(tab == selected_category){
-        $(category).find('div.category-tab').addClass('active-category-tab')
-        $($(category).find('div.category-tab').parent().children()[1]).show()
+        selected_tab = $(category).find('div.category-tab');
+        selected_tab.addClass('active-category-tab');
+        $(selected_tab.parent().children()[1]).show();
+        selected_tab.find('i').removeClass('fa-angle-up');
+        selected_tab.find('i').addClass('fa-angle-down');
       }
     });  
   </script>

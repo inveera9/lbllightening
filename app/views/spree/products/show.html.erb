@@ -35,15 +35,15 @@
                 <p class="prd-details-sub-title">from <%= @product.taxons.first.taxonomy.name %></p>
               </div>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12 col-sx-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12">
               <div class="prd-details-price-outer">
                 <div id="cart-form" data-hook="cart_form">
                   <%= render :partial => 'cart_form' %>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12">
-              <!-- <div class="detail-ryt-end-outer">
+            <!--<div class="col-lg-4 col-md-4 col-sm-12 col-sx-12">
+               <div class="detail-ryt-end-outer">
                 <div class="drop-lis-fom">
                   <strong class="time-lead">Lamp Color </strong>
                     <select class="form-control" name="products">
@@ -64,8 +64,8 @@
                   <strong class="time-lead">Lead Time </strong>
                   <p>In Stock models ship within 1-3 days. All other models ship within 7-9 weeks.</p>
                 </div>
-              </div> -->
-            </div>
+              </div>
+            </div> -->
             
           </div>
         </div>
@@ -78,7 +78,7 @@
       <div class="tabs-bg-outer">
         <ul class="nav nav-tabs">
           <li class="active"><a data-toggle="tab" href="#home">Description</a></li>
-          <li><a data-toggle="tab" href="#menu1">Design</a></li>
+          <li><a data-toggle="tab" href="#spec">Spec</a></li>
           <li><a data-toggle="tab" href="#menu2">Reviews</a></li>
           <li><a data-toggle="tab" href="#menu3">Q&A</a></li>
         </ul>
@@ -88,8 +88,17 @@
               <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
             </div>
           </div>
-          <div id="menu1" class="tab-pane fade">
-            <p>Coming soon.</p>
+          <div id="spec" class="tab-pane fade">
+            <div class="row">
+              <div class="col-lg-8 col-md-8 col-sm-12 col-sx-12">
+                <p>Specification.</p>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12">
+                <% if (@product.images + @product.variant_images).uniq.size > 1 %>
+                  <%= image_tag(@product.images.last.attachment.url(:large), class: "thumbnail") %>
+                <% end %>
+              </div>
+            </div>
           </div>
           <div id="menu2" class="tab-pane fade">
             <p>Coming soon.</p>

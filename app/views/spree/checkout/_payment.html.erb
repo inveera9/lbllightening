@@ -4,43 +4,45 @@
   </div>
   <div class="panel-body" data-hook="checkout_payment_step">
     <% if @payment_sources.present? %>
-      <div class="card_options">
+      <div class="card_options mylog-page">
         <%= radio_button_tag 'use_existing_card', 'yes', true %>
         <label for="use_existing_card_yes">
+          <span><span></span></span>
           <%= Spree.t(:use_existing_cc) %>
         </label>
         <br/>
         <%= radio_button_tag 'use_existing_card', 'no' %>
         <label for="use_existing_card_no">
+          <span><span></span></span>
           <%= Spree.t(:use_new_cc_or_payment_method) %>
         </label>
       </div>
 
       <div id="existing_cards">
         <p class="form-group" data-hook="existing_cards">
-          <table class="existing-credit-card-list">
-            <tbody>
-              <% @payment_sources.each do |card| %>
-                <tr id="<%= dom_id(card,'spree')%>" class="<%= cycle('even', 'odd') %>">
-                  <td><%= card.name %></td>
-                  <td><%= card.display_number %></td>
-                  <td><%= card.month %> / <%= card.year %></td>
-                  <td>
-                    <%= radio_button_tag "order[existing_card]", card.id, (card == @payment_sources.first), { class: "existing-cc-radio" }  %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+          <ul class="existing-credit-card-list">
+            <% @payment_sources.each do |card| %>
+              <li id="<%= dom_id(card,'spree')%>" class="mylog-page">
+                <%= radio_button_tag "order[existing_card]", card.id, (card == @payment_sources.first), { class: "existing-cc-radio" }  %>
+                <label>
+                  <span><span></span></span>
+                  <%= card.name %>
+                  <%= card.display_number %>
+                  <%= card.month %> / <%= card.year %>
+                </label>
+              </li>
+            <% end %>
+          </ul>
         </p>
       </div>
     <% end %>
 
     <ul class="list-group" id="payment-method-fields" data-hook>
       <% @order.available_payment_methods.each do |method| %>
-        <li class="list-group-item">
+        <li class="list-group-item mylog-page">
+          <%= radio_button_tag "order[payments_attributes][][payment_method_id]", method.id, method == @order.available_payment_methods.first %>
           <label>
-            <%= radio_button_tag "order[payments_attributes][][payment_method_id]", method.id, method == @order.available_payment_methods.first %>
+            <span><span></span></span>
             <%= Spree.t(method.name, :scope => :payment_methods, :default => method.name) %>
           </label>
         </li>
