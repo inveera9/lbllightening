@@ -1680,4 +1680,7 @@ color: #fff;
 .existing-credit-card-list li{
   list-style-type: none;
 }
+.specs ul, ul li{
+  list-style-type: none;
+}
 /* Custom CSS start */

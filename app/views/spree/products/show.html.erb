@@ -91,7 +91,19 @@
           <div id="spec" class="tab-pane fade">
             <div class="row">
               <div class="col-lg-8 col-md-8 col-sm-12 col-sx-12">
-                <p>Specification.</p>
+                <p class="price">SPECIFICATIONS</p>
+                <div class="specs">
+                  <% @product.specs.each do |key,spec| %>
+                    <div class="col-md-6">  
+                      <ul>
+                        <span><%= key %></span>
+                        <% @product.specs[key].each do |element| %>
+                          <li><%= element %></li>
+                        <% end %>
+                      </ul>
+                  </div>
+                  <% end %>
+                </div>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12">
                 <% if (@product.images + @product.variant_images).uniq.size > 1 %>
