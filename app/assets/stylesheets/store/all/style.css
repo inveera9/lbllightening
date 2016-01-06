@@ -509,6 +509,7 @@ and (max-device-width : 568px) {
   padding-left:8px !important;
   padding-right:8px;
 }
+
 }
 /*====menu end===========*/
 .grt{
@@ -1536,8 +1537,126 @@ color: #fff;
   color: #666;
 }
 /* Pagination end */
-/* Custom CSS start */
+/*==== start rating start ===========*/
+div.stars {
+  display: inline-block;
+}
+input.star { display: none; }
+label.star {
+  float: right;
+  padding: 5px;
+  font-size: 20px;
+  color: #ccc;
+  transition: all .2s;
+}
+input.star:checked ~ label.star:before {
+  content: '\f005';
+  color: #ff8500;
+  transition: all .25s;
+}
+input.star-5:checked ~ label.star:before {
+  color: #ff8500;
+}
+input.star-1:checked ~ label.star:before { color: #F62; }
+label.star:before {
+  content: '\f005';
+  font-family: FontAwesome;
+}
+.star-margin label.star:hover{
+  color: #ff8500;
+  cursor: pointer;
+}
+/*==== start rating end ===========*/
+/*==== review start ===========*/
+.review-page{
+ margin-top:15px;
+ margin-bottom:15px;
+}
+.review-page-left{
+ border:solid 1px #eeeeee;
+ margin-top:15px;
+ padding:10px;
+}
 
+.review-page strong{
+ font-size:10pt;
+ color:#000;
+ font-weight:normal;
+}
+.make-review{
+ font-size:10pt;
+ color:#ff8500;
+}
+.make-review-p-content{
+ font-size:9pt;
+ color:#666;
+}
+.choose-review{
+ font-size:11pt;
+ color:#000;
+}
+.laft-rv-img{
+ margin-top:10px;
+}
+.laft-rv-img img{
+ vertical-align: top;
+ width: 50px;
+ float: left;
+ margin-right: 10px;
+}
+.warn-text{
+ background:#e4fff1;
+ color:#000;
+ font-weight:normal;
+ border:solid 1px #d8ffeb;
+ font-size:12pt;
+ padding:10px;
+}
+.help-other-text{
+ border-bottom:solid 1px #eeeeee;
+ margin-top:15px;
+ font-size:12pt;
+ color:#ff8500;
+ padding-bottom:10px;
+}
+.mandatory-text{
+ margin-top:15px;
+ margin-bottom:15px;
+ font-size:9pt;
+}
+.mandatory-text span{
+ color:red;
+}
+.review-page-form  .form-control{
+ box-shadow:none;
+ border-radius:0;
+ font-weight:normal;
+ width:84%;
+}
+.bg-grayfrom{
+ background:#f2f2f2;
+ padding:12px 10px 6px 10px;
+}
+.review-page-form label{
+ width: 15%;
+ font-weight:normal;
+ vertical-align: top;
+ padding-top:8px;
+ color:#000;
+}
+.review-page-form .form-group{
+  margin-bottom: 3px;
+}
+.max-txt-sml{
+ font-size:9pt;
+ padding-left: 15.4%;
+}
+.star-margin{
+  margin-bottom: -18px;
+  margin-left: -38px;
+}
+/*==== review end ===========*/
+/* Custom CSS start */
 .list-group-item{
   border:none;
   border-bottom: 1px solid #f5f5f5;
@@ -1682,5 +1801,27 @@ color: #fff;
 }
 .specs ul, ul li{
   list-style-type: none;
+}
+.spec-image img{
+  max-width: 250px;
+}
+.specs ul li{
+  text-transform: capitalize;
+}
+.new-star-page{
+  float: left;
+}
+.list-review-new{
+  border-left: 1px solid #ccc;
+  padding: 10px;
+}
+.review-content{
+  font-size: 12px;
+}
+.review-content-head{
+  font-weight: bold;
+}
+.mandatory-icon{
+  color: red;
 }
 /* Custom CSS start */

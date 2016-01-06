@@ -90,22 +90,33 @@
           </div>
           <div id="spec" class="tab-pane fade">
             <div class="row">
+              <p></p>
               <div class="col-lg-8 col-md-8 col-sm-12 col-sx-12">
-                <p class="price">SPECIFICATIONS</p>
                 <div class="specs">
-                  <% @product.specs.each do |key,spec| %>
-                    <div class="col-md-6">  
-                      <ul>
-                        <span><%= key %></span>
-                        <% @product.specs[key].each do |element| %>
-                          <li><%= element %></li>
-                        <% end %>
-                      </ul>
-                  </div>
+                  <% if @product.specs.blank? %>
+                    <div class="col-md-12">
+                      <span>There is no specfication available for this product.</span>
+                    </div>
+                  <% else %>
+                    <% count = 0 %>  
+                    <% @product.specs.each do |key,spec| %>
+                      <div class="col-md-6">  
+                        <ul>
+                          <span><%= key %></span>
+                          <% @product.specs[key].each do |element| %>
+                            <li><%= element %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                      <% count += 1 %>
+                      <% if (count%2 == 0) %>
+                        <div class="clearfix"></div>
+                      <% end %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12">
+              <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12 spec-image">
                 <% if (@product.images + @product.variant_images).uniq.size > 1 %>
                   <%= image_tag(@product.images.last.attachment.url(:large), class: "thumbnail") %>
                 <% end %>
@@ -113,8 +124,21 @@
             </div>
           </div>
           <div id="menu2" class="tab-pane fade">
-            <p>Coming soon.</p>
-          </div>
+            <p></p>
+            <div id="reviews">
+              <% if Spree::Reviews::Config[:include_unapproved_reviews] == false and @product.reviews.approved.count == 0 %>
+                <p class="reviews-none"><%= Spree.t(:no_reviews_available) %></p>
+              <% else %>
+                <%= render 'spree/shared/rating', product: @product, review: 0 %>
+                <% for review in (Spree::Reviews::Config[:track_locale] ? @product.reviews.localized(I18n.locale) : @product.reviews) %>
+                  <%= render 'spree/shared/review', review: review %>
+                <% end %>
+              <% end %>
+              <% if !Spree::Reviews::Config[:require_login] || spree_current_user %>
+                <%= link_to Spree.t(:write_your_own_review), new_product_review_path(@product), class: 'btn btn-hot text-uppercase btn-lg', rel: 'nofollow' %>
+              <% end %>
+            </div>
+        </div>
           <div id="menu3" class="tab-pane fade">
             <p>Coming soon.</p>
           </div>

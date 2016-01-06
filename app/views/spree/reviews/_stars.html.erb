@@ -1,0 +1,15 @@
+<% if defined? edit_enabled
+    state = ''
+    name  = 'review[rating]'
+  else
+    state = 'disabled'
+    name  = defined?(review).nil? ? Time.now.tv_usec.to_s : "review_#{review}"
+  end %>
+<% for i in (1..Spree::Reviews::Config.stars).to_a.reverse %>
+  <input name="<%= name %>"
+         type="radio" class="star"
+         value="<%= pluralize(i, 'stars') %>" <%= state %>
+         <%= 'checked' if i == stars %> id="star-<%=i%>" />
+  <label for="star-<%=i%>" class="star star-<%=i%>"></label>
+<% end %>
+

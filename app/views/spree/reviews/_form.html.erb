@@ -1,0 +1,73 @@
+<%= form_for review, url: product_reviews_path(product), html: { method: :post } do |f| %>
+  <%= render 'spree/shared/error_messages', target: review %>
+  <div class="review-page">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="choose-review">
+            You have chosen to review
+        </div>
+        <div class="laft-rv-img">
+          <% if (product.images + product.variant_images).uniq.size > 1 %>
+            <%= image_tag(product.images.first.attachment.url(:small), class: "thumbnail")%>
+          <% end %>
+          <a href=""><%= product.name %></a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="review-page-left">
+          <p class="make-review">What makes a good review</p>
+          <strong>What makes a good review</strong>
+          <p class="make-review-p-content">It's always better to review a product you have personally experienced. </p>
+          <strong> Educate your readers </strong>
+          <p class="make-review-p-content"> Provide a relevant, unbiased overview of the product. Readers are interested in the pros and the cons of the product.  </p>
+          <strong> Be yourself, be informative </strong>
+          <p class="make-review-p-content"> Let your personality shine through, but it's equally important to provide facts to back up your opinion.  </p>
+          <strong> Get your facts right! </strong>
+          <p class="make-review-p-content"> Nothing is worse than inaccurate information. If you're not really sure, research always helps.  </p>
+          <strong>  Stay concise </strong>
+          <p class="make-review-p-content"> Be creative but also remember to stay on topic. A catchy title will always get attention!   </p>
+          <strong>  Easy to read, easy on the eyes  </strong>
+          <p class="make-review-p-content">  A quick edit and spell check will work wonders for your credibility. Also, break reviews into small, digestible paragraphs.   </p>
+        </div>
+    </div>
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+      <div class="help-other-text">Help others! Write a iLighting review</div>
+      <div class="review-page-form">
+        <div class="mandatory-text">All fields are mandatory <span>*</span></div>
+          <div class="form-group form-inline bg-grayfrom">
+            <label for="exampleInputName2">Review Title</label>
+            <%= f.text_field :title, maxlength: 255, size: 50, class: 'form-control' %>
+            <span class="max-txt-sml">(Maximum 60 characters.) </span>
+          </div>
+          <div class="form-group form-inline bg-grayfrom">
+            <label for="exampleInputName2"> Your Review: 
+              <span class="mandatory-icon">*</span>
+            </label>
+            <%= f.text_area :review, wrap: 'virtual', rows: 10, cols: 50, class: 'form-control' %>
+            <span class="max-txt-sml">Please do not include: HTML, references to other retailers, pricing, personal information, any profane.</span>
+          </div>
+          <div class="form-group form-inline bg-grayfrom">
+            <label for="exampleInputName2">Your Rating:
+              <span class="mandatory-icon">*</span>
+            </label>
+            <div class="stars star-margin">
+              <%= render 'spree/reviews/stars', stars: review.rating, edit_enabled: true %>  
+            </div>
+            <div class="clearfix"></div>
+            <span class="max-txt-sml">(Click to rate on scale of 1-5)  </span>
+          </div>
+          <div class="form-group form-inline bg-grayfrom">
+            <label for="exampleInputName2">Your Name:
+              <span class="mandatory-icon">*</span>
+            </label>
+            <%= f.text_field :name, maxlength: 255, size: 50, class: 'form-control' %>
+            <span class="max-txt-sml">(First and last name)   </span>
+          </div>
+          <div class="form-group form-inline bg-grayfrom">
+            <label for="exampleInputName2"></label>
+             <%= f.submit Spree.t(:submit_your_review), class: 'btn btn-hot text-uppercase btn-lg' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
