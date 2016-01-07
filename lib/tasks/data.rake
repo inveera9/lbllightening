@@ -3,16 +3,14 @@ namespace :data do
   
   desc "Populate data into db"
   task :populate_data => :environment do
-    taxonomy = Spree::Taxonomy.find_by(name: "Category")
-    taxonomy ||= Spree::Taxonomy.create!(name: "Category")
+    taxonomy = Spree::Taxonomy.find_by(name: "LBL Lighting")
+    taxonomy ||= Spree::Taxonomy.create!(name: "LBL Lighting")
     parent_id = taxonomy.taxons.root.id
     count = 0
     array = []
-    CSV.foreach('/home/inveera/lbl/data/lbl_data_file_new.csv',  :headers=>true) do |row|
-      #next if row['model_number'].nil?
+    CSV.foreach('/data/lbl_data_file_new.csv',  :headers=>true) do |row|
       taxon = taxonomy.taxons.find_by(name: row['product_category'])      
       taxon ||= taxonomy.taxons.create(name: row['product_category'], parent_id: parent_id) 
-      #model_number = "#{row['model_number']}-#{count}"
       product = Spree::Product.find_by(model_number: row['model_number'])
       if product.present?
         next
@@ -28,11 +26,9 @@ namespace :data do
   end
   task :populate_images => :environment do
     puts "Product images uploading..."
-    CSV.foreach('/home/inveera/lbl/data/lineart_image_file_new.csv',  :headers=>true) do |row|
+    CSV.foreach('/data/lineart_image_file_new.csv',  :headers=>true) do |row|
       product = Spree::Product.find_by(model_number: row['model_number'].gsub(/\u00a0/, ''))
-      #next if product.id <= 92 
       puts "#{product.slug}"
-      #puts row['image_url']
       Spree::Image.create!(:attachment => open(URI.parse(row['image_url'])), :viewable => product.master)
     end
   end
@@ -48,7 +44,7 @@ namespace :data do
 
   task :populate_specs => :environment do
     puts "Product specs updating..."
-    CSV.foreach('/home/inveera/lbl/data/lbl_specs.csv',  :headers=>true) do |row|
+    CSV.foreach('/data/lbl_specs.csv',  :headers=>true) do |row|
       model_number = row['model_number'].gsub(/\u00a0/, '')
       product = Spree::Product.find_by(model_number: model_number)
       str = row['product_specs'].gsub('"',"")
