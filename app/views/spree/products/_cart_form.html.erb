@@ -11,12 +11,12 @@
           </div>
           <p class="free-ship">free shipping <span>on most orders</span></p>
           <div class="rating hidden-sm">
-            <a href="javascript:void(0)">
-               <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-               </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-               </i><i class="fa fa-star"></i>
-            </a>
+            <% stars = @product.stars %>
+            <div class="average-rating pull-left">
+              <%= render 'spree/reviews/stars', stars: stars %>
+            </div>
           </div>
+          <div class="clearfix"></div>
           <div class="media-body">
             <p>
             <a class="btn btn-xs btn-default pnit" href="#"><i class="fa fa-pinterest"></i> Pinterest </a>

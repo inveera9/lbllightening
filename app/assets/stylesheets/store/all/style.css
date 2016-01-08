@@ -979,6 +979,7 @@ color: #fff;
 .tabs-bg-outer  .fade{
   background:#f5f5f5;
   padding:5px 15px 15px 15px;
+  overflow: hidden;
 }
 .add-product-bx .form-control{
   border-radius:0px;
@@ -1656,6 +1657,25 @@ label.star:before {
   margin-left: -38px;
 }
 /*==== review end ===========*/
+/*==== review on detail page start ===========*/
+.star-small-text label.star{
+ font-size: 11px;
+ padding: 0 1px;
+ margin-top:15px;
+}
+.revier-name{
+ font-size:9pt;
+}
+.revier-sub{
+ margin-top:15px;
+ font-size:11pt; 
+ color:#000;
+ font-weight:normal;
+}
+.revier-overflow{
+ overflow:hidden;
+}
+/*==== review on detail page end ===========*/
 /* Custom CSS start */
 .list-group-item{
   border:none;
@@ -1823,5 +1843,8 @@ label.star:before {
 }
 .mandatory-icon{
   color: red;
+}
+.specs span{
+  color: #ff8500;
 }
 /* Custom CSS start */
