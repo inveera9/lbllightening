@@ -79,7 +79,6 @@
         <ul class="nav nav-tabs">
           <li class="active"><a data-toggle="tab" href="#home">Description</a></li>
           <li><a data-toggle="tab" href="#spec">Spec</a></li>
-          <li><a data-toggle="tab" href="#menu2">Reviews</a></li>
           <li><a data-toggle="tab" href="#menu3">Q&A</a></li>
         </ul>
         <div class="tab-content">
@@ -123,22 +122,6 @@
               </div>
             </div>
           </div>
-          <div id="menu2" class="tab-pane fade">
-            <p></p>
-            <div id="reviews">
-              <% if Spree::Reviews::Config[:include_unapproved_reviews] == false and @product.reviews.approved.count == 0 %>
-                <p class="reviews-none"><%= Spree.t(:no_reviews_available) %></p>
-              <% else %>
-                <%#= render 'spree/shared/rating', product: @product, review: 0 %>
-                <% for review in (Spree::Reviews::Config[:track_locale] ? @product.reviews.localized(I18n.locale) : @product.reviews) %>
-                  <%= render 'spree/shared/review', review: review %>
-                <% end %>
-              <% end %>
-              <% if !Spree::Reviews::Config[:require_login] || spree_current_user %>
-                <%= link_to Spree.t(:write_your_own_review), new_product_review_path(@product), class: 'btn btn-hot text-uppercase btn-lg', rel: 'nofollow' %>
-              <% end %>
-            </div>
-        </div>
           <div id="menu3" class="tab-pane fade">
             <p>Coming soon.</p>
           </div>

@@ -1,1 +1,52 @@
-<%= render 'spree/shared/reviews' %>
+<div class="row">
+  <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+    <div class="all-review">Reviews of <%= @product.name %></div>
+    <div class="review-all-buy">
+      <p>
+        <span class="margin-have">Have you used this product?</span>
+        <%= link_to "Write a Review", new_product_review_path(@product), class: 'btn btn-hot' %>
+      </p>
+    </div>
+    <div class="tab-pane fade in active" id="home">
+      <% if Spree::Reviews::Config[:include_unapproved_reviews] == false and @product.reviews.approved.count == 0 %>
+        <p class="reviews-none"><%= Spree.t(:no_reviews_available) %></p>
+      <% else %>
+        <% for review in (Spree::Reviews::Config[:track_locale] ? @product.reviews.localized(I18n.locale) : @product.reviews) %>
+          <%= render 'spree/shared/review', review: review %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+    <div class="choose-review">
+    <p>
+      <%= link_to product_path(@product), class: 'make-review' do %>
+        <i class="fa fa-long-arrow-left"></i> Back to Product Page
+      <% end %>
+    </p>
+    <p>You have chosen to review</p>
+    </div>
+    <div class="laft-rv-img">
+      <% if @product.images.size > 0 %>
+        <%= image_tag @product.images.first.attachment.url, size: '50x70' %>
+      <% end %>
+      <%= link_to @product.name, product_path(@product) %>
+    </div>
+    <div class="clearfix"></div>
+    <div class="review-page-left">
+      <p class="make-review">What makes a good review</p>
+      <strong>What makes a good review</strong>
+      <p class="make-review-p-content">It's always better to review a product you have personally experienced. </p>
+      <strong> Educate your readers </strong>
+      <p class="make-review-p-content"> Provide a relevant, unbiased overview of the product. Readers are interested in the pros and the cons of the product.  </p>
+      <strong> Be yourself, be informative </strong>
+      <p class="make-review-p-content"> Let your personality shine through, but it's equally important to provide facts to back up your opinion.  </p>
+      <strong> Get your facts right! </strong>
+      <p class="make-review-p-content"> Nothing is worse than inaccurate information. If you're not really sure, research always helps.  </p>
+      <strong>  Stay concise </strong>
+      <p class="make-review-p-content"> Be creative but also remember to stay on topic. A catchy title will always get attention!   </p>
+      <strong>  Easy to read, easy on the eyes  </strong>
+      <p class="make-review-p-content">  A quick edit and spell check will work wonders for your credibility. Also, break reviews into small, digestible paragraphs.   </p>
+    </div>
+  </div>
+</div>

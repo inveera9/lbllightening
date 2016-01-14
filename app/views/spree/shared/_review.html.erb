@@ -1,6 +1,6 @@
 <div class="review" itemprop="reviews" itemscope itemtype="http://schema.org/Review">
   <div class="row">  
-    <div class="col-md-2 col-sm-12">
+    <div class="col-md-2 col-sm-12 all-review-margin">
       <div class="star-small-text">
         <div class="stars">
           <%= render 'spree/reviews/stars', stars: review.rating %>
@@ -20,8 +20,10 @@
       <div class="revier-name"><%= review.created_at.to_date.strftime("%b, %d %Y") %></div>
     </div>
     <div class="col-md-10 col-sm-12">
-      <div class="revier-sub"><%= review.title.capitalize %></div>
-      <p><%= simple_format(review.review) %></p>
+      <div class="review-border-bottom">
+        <div class="all-review-sub"><%= review.title.capitalize %></div>
+        <p><%= simple_format(review.review) %></p>
+      </div>
     </div>
   </div>
 </div>

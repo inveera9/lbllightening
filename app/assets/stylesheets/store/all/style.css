@@ -952,7 +952,11 @@ a.socialIcon:hover, .socialHoverClass {
   background:#4ac9d7;
 }
 .buy-cart-bttn .btn-hot:hover{
-color: #fff;
+  color: #fff;
+  background:#38bac8;
+}
+.btn-hot:focus{
+  color: #fff;
   background:#38bac8;
 }
 .buy-cart-bttn .btn-hot-wish {
@@ -1132,7 +1136,8 @@ color: #fff;
   font-size:19pt;
 }
 .mycart-ttl a{
-  color: #666;
+  color: #ff8500;
+  font-size: 13pt;
 }
 .mycart-ttl a:hover{
   color: #ff8500;
@@ -1545,8 +1550,8 @@ div.stars {
 input.star { display: none; }
 label.star {
   float: right;
-  padding: 5px;
-  font-size: 20px;
+  padding: 1px;
+  font-size: 14px;
   color: #ccc;
   transition: all .2s;
 }
@@ -1676,6 +1681,56 @@ label.star:before {
  overflow:hidden;
 }
 /*==== review on detail page end ===========*/
+ /*==== all review start ===========*/
+.all-review{
+ border-bottom: 1px dotted #eeeeee;
+    color: #000;
+    font-size: 14pt;
+ line-height:29px;
+    padding-bottom: 10px;
+}
+.all-review-margin{
+
+}
+.all-review-sub{
+ margin-top:15px;
+ margin-bottom:10px;
+ font-size:10pt; 
+ color:#000;
+ font-weight:normal;
+}
+.review-border-bottom{
+ border-bottom: 1px dotted #ccc;
+ margin-bottom:20px;
+ padding-bottom:20px;
+}
+.review-all-buy {
+ margin-top:12px;
+}
+.review-all-buy .btn{
+    margin: 15px 15px 15px 0px;
+ border-radius:0;
+ font-size:9pt;
+}
+
+.review-all-buy .btn-xs{
+    font-weight: 300;
+}
+   
+.review-all-buy .btn-hot {
+ color: #fff;
+ background:#4ac9d7;
+ border:solid 1px #229fad;
+}
+.review-all-buy .btn-hot:hover{
+ color: #fff;
+ background:#38bac8;
+ border:solid 1px #229fad;
+}
+.margin-have{
+ margin-right:15px;
+}
+/*==== all review end ===========*/
 /* Custom CSS start */
 .list-group-item{
   border:none;
@@ -1796,9 +1851,6 @@ label.star:before {
   font-size: 11pt;
   padding: 0;
 }
-.container{
-  margin-bottom: 10px;
-}
 #product-variants ul li{
   list-style-type: none;
 }
@@ -1846,5 +1898,80 @@ label.star:before {
 }
 .specs span{
   color: #ff8500;
+}
+.category-rating{
+  margin-left: 34%;
+}
+.review-page-form label.star{
+  padding: 8px;
+}
+.cloudzoom-lens{
+  display: none;
+}
+#surround:hover .cloudzoom-lens{
+  display: none;
+}
+.all-review-count{
+  font-size: 9pt;
+}
+.all-review-count a{
+  color: #666;
+}
+.review-count-padding{
+    padding: 0px;
+}
+#update-cart .table > tbody + tbody{
+  border-top: none !important;
+}
+#cart-detail thead > tr > th, .stock-contents thead > tr > th, #line-items thead > tr > th{
+  border-bottom: none !important;
+  font-weight: normal;
+}
+.form-control{
+  border-radius:0;
+  box-shadow:none;
+}
+.cart-item-delete a{
+  color: #000;
+  font-size: 13pt;
+}
+.shipping-methods li{
+  margin-top: 0;
+  border-style: none;
+}
+.order-sub-total{
+  text-align: right;
+}
+.edit-action{
+  color: #ff8500;
+}
+.edit-action:hover{
+  color: #eb7b02;
+}
+.accurate-order-title{
+  color: #eb7b02; 
+}
+#shipping_method{
+  margin: 15px 0 0 0;
+}
+.select-shipping_method-txt{
+  font-size: 12pt;
+  color: #000;
+  padding: 0 0 8px 12px;
+  margin-bottom: 15px;
+  border-bottom: solid 1px #ddd;
+}
+#shipping_method li.list-group-item{
+  padding: 0 15px;
+}
+.name-card-margin{
+  margin-bottom: 20px;
+}
+.confirm-order-text{
+  color: #000;
+  font-size: 10pt;
+}
+#line-items{
+  margin: 15px 0 0 0;
 }
 /* Custom CSS start */

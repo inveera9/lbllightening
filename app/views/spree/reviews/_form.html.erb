@@ -10,7 +10,7 @@
           <% if (product.images + product.variant_images).uniq.size > 1 %>
             <%= image_tag(product.images.first.attachment.url(:small), class: "thumbnail")%>
           <% end %>
-          <a href=""><%= product.name %></a>
+          <%= link_to product.name, product_path(product) %>
         </div>
         <div class="clearfix"></div>
         <div class="review-page-left">

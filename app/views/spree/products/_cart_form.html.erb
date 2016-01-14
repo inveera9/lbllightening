@@ -12,8 +12,22 @@
           <p class="free-ship">free shipping <span>on most orders</span></p>
           <div class="rating hidden-sm">
             <% stars = @product.stars %>
-            <div class="average-rating pull-left">
-              <%= render 'spree/reviews/stars', stars: stars %>
+            <div class="col-md-4">
+              <div class="average-rating pull-left" title="<%= txt_stars(stars) %>">
+                <%= render 'spree/reviews/stars', stars: stars %>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="all-review-count">
+                <%= link_to "#{@product.reviews_count} Reviews", product_reviews_path(@product) %>
+              </div>
+            </div>
+            <div class="col-md-4 review-count-padding">
+              <div class="all-review-count">
+                <%= link_to new_product_review_path(@product), class: '', rel: 'nofollow' do %>
+                  <i class="fa fa-pencil-square-o"></i> Write a Review
+                <% end %>
+              </div>
             </div>
           </div>
           <div class="clearfix"></div>
