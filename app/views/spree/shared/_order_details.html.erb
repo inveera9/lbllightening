@@ -107,7 +107,7 @@
     <tr class="total">
       <td colspan="4" align="right">
         <span><%= Spree.t(:order_total) %>:</span></td>
-      <td class="total">
+      <td class="total text-right">
         <span id="order_total" class="lead price"><%= order.display_total.to_html %></span>
       </td>
     </tr>
@@ -118,7 +118,7 @@
       <td colspan="4" class="order-sub-total">
         <span><%= Spree.t(:subtotal) %>:</span>
       </td>
-      <td class="total price">
+      <td class="total price text-right">
         <span><%= order.display_item_total.to_html %></span>
       </td>
     </tr>
@@ -143,7 +143,7 @@
         <td colspan="4" align="right" class="text-muted">
           <%= Spree.t(:shipping) %>: <strong><%= name %></strong>
         </td>
-        <td class="total price"><span><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency).to_html %></span></td>
+        <td class="total price text-right"><span><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency).to_html %></span></td>
       </tr>
     <% end %>
   </tfoot>

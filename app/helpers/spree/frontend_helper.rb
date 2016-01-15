@@ -50,7 +50,7 @@ module Spree
           content_tag('li', "<a href='/checkout/#{state}' class='btn btn-circle btn-default'>#{step}</a><p>#{text}</p>".html_safe, class: css_classes.join(' '))
         else
           #content_tag('li', content_tag('a', 2, class: "btn btn-circle btn-default"), class: css_classes.join(' '))
-          content_tag('li', "<a class='btn btn-circle btn-default'>#{step}</a><p>#{text}</p>".html_safe, class: css_classes.join(' '))
+          content_tag('li', "<a class='btn btn-circle btn-default' disabled='disabled'>#{step}</a><p>#{text}</p>".html_safe, class: css_classes.join(' '))
         end
       end
       content_tag('ul', raw(items.join("\n")), class: 'stepwizard-row setup-panel', id: "checkout-step-#{@order.state}")
@@ -95,6 +95,10 @@ module Spree
           link_to("<i class='fa fa-angle-double-right ftr-arw-sew'></i> #{taxon.name.capitalize}".html_safe, seo_url(taxon), class: css_class) + taxons_tree(taxon, current_taxon, max_level - 1)
         end.join("\n").html_safe
       end
+    end
+
+    def related_products(product)
+      product.taxons.first.products.limit(3)
     end
   end
 end

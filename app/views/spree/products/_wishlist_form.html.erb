@@ -3,9 +3,12 @@
     <%= form_for Spree::WishedProduct.new do |f| %>
       <%= f.hidden_field :variant_id, value: @product.master.id %>
       <%= f.hidden_field :quantity %>
-      <button type="submit" class="btn btn-hot-wish text-uppercase btn-lg wishlist-btn">
-        <%= Spree.t(:add_to_wishlist) %>
-      </button>
+      <div class="col-md-2"></div>
+      <div class="col-md-10">
+        <button type="submit" class="wishlits-btn-margin btn btn-hot-wish text-uppercase btn-lg wishlist-btn">
+          <%= Spree.t(:add_to_wishlist) %>
+        </button>
+      </div>
     <% end %>
   </div>
 <% end %>

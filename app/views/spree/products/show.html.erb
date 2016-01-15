@@ -128,6 +128,44 @@
         </div>
       </div>
     </div>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-sx-12">
+      <div class="col-md-12 related-products-sec">
+        <div class="drop-lis-fom dolr related-product-head">
+          <strong class="time-lead"> Related Products </strong>
+        </div>
+        <% products = related_products(@product)%>
+        <% products.each do |product| %>
+          <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
+          <div class="box-1-related">
+            <div class="lib-panel">
+              <div class="col-md-4 no-pad-releated-product">
+                <% if (product.images + product.variant_images).uniq.size > 1 %>
+                  <%= image_tag(product.images.first.attachment.url(:small), class: "img-responsive") %>
+                <% end %>
+              </div>
+              <div class="col-md-8 no-padding">
+                <div class="lib-row lib-header"><%= truncate(product.name, length: 33) %></div>
+                <div class="lib-row lib-desc">
+                  <div class="rating hidden-sm">
+                    <% stars = product.stars %>
+                    <div class="average-rating pull-left" title="<%= txt_stars(stars) %>">
+                      <%= render 'spree/reviews/stars', stars: stars %>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class="text-releated-product"><%= display_price(product) %></div>
+                    <div class="text-releated-product-cart">
+                      <i class="fa fa-shopping-cart"></i>
+                      <%= link_to "Add to cart", url, class: "hidden-sm" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <hr>
 <%= render partial: 'spree/shared/footer_top' %>

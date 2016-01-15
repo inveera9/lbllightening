@@ -445,6 +445,9 @@ and (max-device-width : 568px) {
 .hide-txt{
   display:none;
 }
+.wishlits-btn-margin{
+  margin: 0 !important;
+}
 .shpo-cart-outer .btn{
   width:100% !important;
 }
@@ -960,8 +963,12 @@ a.socialIcon:hover, .socialHoverClass {
   background:#38bac8;
 }
 .buy-cart-bttn .btn-hot-wish {
-color: #fff;
+  color: #fff;
   background:#ff8500;
+}
+.btn-hot-wish:focus {
+  color: #fff;
+  background:#eb7b02;
 }
 .buy-cart-bttn .btn-hot-wish:hover {
   color: #fff;
@@ -977,7 +984,7 @@ color: #fff;
   padding:10px 30px;
 }
 .tabs-bg-outer .tabs-bg-outer .nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus, .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
-  background:#00334e;
+  background:#ff8500;
   color:#fff;
 }
 .tabs-bg-outer  .fade{
@@ -1731,6 +1738,39 @@ label.star:before {
  margin-right:15px;
 }
 /*==== all review end ===========*/
+.lib-panel .lib-row {
+    padding: 0 20px 0 20px;
+}
+.no-padding {
+    padding: 0;
+ font-size:8pt;
+}
+.no-pad-releated-product{
+ padding-right: 0;
+}
+.text-releated-product{
+ font-size:8pt;
+ color:#ff8500;
+}
+.text-releated-product-cart i{
+ color:#1dbccd;
+ font-size:10pt;
+ padding-right:5px;
+}
+.text-releated-product-cart a{
+ color:#1dbccd;
+ font-size:10pt;
+}
+.saprator-related-prod{
+ height: 1px;
+    width: 100%;
+    background-color: #d9d9d9;
+}
+.box-1-related{
+ margin-bottom:10px;
+ border-bottom:dotted 1px #f1f1f1;
+ overflow:hidden;
+}
 /* Custom CSS start */
 .list-group-item{
   border:none;
@@ -1973,5 +2013,32 @@ label.star:before {
 }
 #line-items{
   margin: 15px 0 0 0;
+}
+.wishlits-btn-margin{
+  margin: -78px 0px 0px 12px;
+}
+.related-products-sec{
+  margin-top: 58px;
+}
+.related-product-head{
+  margin-bottom: 10px;
+  text-align: center;
+}
+.mylog-page input[type="radio"]:disabled + label {
+  color: #aaa; 
+}
+.mylog-page input[type="radio"]:disabled + label > span > span{
+  display          : block;
+  height           : 0.5em;
+  margin           : 0.125em;
+  border           : solid 1px #ccc;
+  border-radius    : 50%;
+  background       :#ccc;
+}
+.stepwizard ul li.active a:hover{
+  background-color: #ff8500;
+  border: 1px solid #ff8500;
+  color: #fff;
+  cursor: default;
 }
 /* Custom CSS start */
