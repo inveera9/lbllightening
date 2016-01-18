@@ -1,6 +1,7 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12">
   <div id="wishlist_header">
     <h1><%= @wishlist.name %></h1>
+    <div class="alert alert-success wishlist-msg" style="display:none">Item has been deleted from wishlist</div>
     <% if @wishlist.user == spree_current_user %>
       <div id="manage_wishlist_links">
         <%= link_to Spree.t(:edit_wishlist), edit_wishlist_path(@wishlist), class: 'button' %>
@@ -31,7 +32,8 @@
       <tr class="<%= cycle('', 'alt') %>">
       <% if @wishlist.user == spree_current_user %>
         <td>
-          <p><%#= link_to Spree.t(:remove_from_wishlist), wish, method: :delete, class: 'btn btn-danger' %></p>
+          <p><%= link_to Spree.t(:remove_from_wishlist),"javascript:void(0)", "wish-id"=>wish.id ,class: 'delete-wish-item' %></p>
+
           <%= form_for :order, url: populate_orders_url do |f| %>
             <%= hidden_field_tag 'variant_id', variant.id, size: 3 %>
             <%= Spree.t(:quantity) %>
@@ -98,3 +100,25 @@
   <% end %>
   </div>
 </div>
+<script>
+  $(document).ready(function(){
+    $('.delete-wish-item').click(function(){
+      var id = $(this).attr('wish-id');
+      var current_item = $(this)
+      $.ajax({
+        url: '/wished_products/'+id,
+        type: 'DELETE',
+        success:function(reponse){
+          $(".wishlist-msg").show().delay(3200).fadeOut(300);
+          current_item.parent().parent().parent().remove();
+          if ($("#line_items").find('tr').length == 0){
+            $("#line_items").append("<tr><td colspan='6'>Your wishlist is empty</td></tr>");
+          }
+        },
+        error:function(){
+          alert('Error: Unable to delete item.');
+        }
+      });
+    })
+  })
+</script>
