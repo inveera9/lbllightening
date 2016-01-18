@@ -100,5 +100,10 @@ module Spree
     def related_products(product)
       product.taxons.first.products.limit(3)
     end
+
+    def popular_products(n)
+      Spree::Product.limit(n)
+    end
+
   end
 end

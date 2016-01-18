@@ -1,0 +1,179 @@
+
+.thumbelina {
+    list-style:none;
+    padding:0px;
+    margin:0px;
+    position:absolute;
+	top:6px;
+    white-space:nowrap;
+    /* font-size:0 stop gaps between display-inline li elemets */
+    /* Either do this, or remove all white space in HTML beween li elements */
+    font-size:0;    
+    /* prevent annoying iPad cut/paste actions */
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;     
+}
+
+/* Style for the list items that surround the thumbnails */
+.thumbelina li {
+   padding:5px;
+   line-height: 0px;
+   margin:0px;
+}
+
+/* Add a border to the thumbnails. */
+.thumbelina li img {
+     border:1px solid #ccc;
+	 padding:2px;
+}
+
+/* Hover effect for the images */
+.thumbelina li img:hover {
+     border:1px solid #aaa;
+	 padding:2px;
+}
+
+    
+
+/* Common style for the buttons */
+.thumbelina-but {
+    position:absolute;
+    /*background-color: #ccc;
+    border:1px solid #aaa;*/
+    /* box-shadow: 0px 0px 8px rgba(0,0,0,0.25); */
+    z-index: 1;
+    cursor:pointer;   
+    
+    /* Font related items for the symbols used on buttons */
+    /* Obviously not needed if you're just using images */
+    color:#888;
+    text-align:center;
+    vertical-align:middle;
+    font-size:14px;
+    font-weight: bold;
+    font-family:monospace;
+}
+
+/* Hover style for active button */    
+.thumbelina-but:hover {
+    color:#000;
+     /*box-shadow: 0px 0px 8px rgba(0,0,0,0.5);*/
+}
+
+/* Disabled style when button is not active due to extents being reached. */
+/* You could do other things e.g. make buttons dissapear completely. */
+.thumbelina-but.disabled,
+.thumbelina-but.disabled:hover {
+    /*background-color: #efefef;*/
+    color: #ccc;
+    cursor:default;
+    box-shadow:none;
+}
+
+/* Horizontal buttons. */
+.thumbelina-but.horiz {
+   line-height: 30px;
+    top: 30px;
+    width: 14px;
+
+}
+/* Left edge button. */
+.thumbelina-but.horiz.left {
+    left:-22px;
+    border-radius: 5px 0px 0px 5px;
+}
+/* Right edge button */
+.thumbelina-but.horiz.right {
+    right:-22px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+/* Vertical buttons. */  
+.thumbelina-but.vert {
+    left:-1px;
+    height: 20px;
+    line-height: 20px;
+    width:93px
+}
+
+/* Top edge button. */
+.thumbelina-but.vert.top {
+    top:-22px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+/* Bottom edge button. */
+.thumbelina-but.vert.bottom {
+    bottom:-22px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+/*****************style css*****************/
+ /* div that surrounds Cloud Zoom image and content slider. */
+            #surround {
+                width:100%;
+                min-width: 256px;
+                max-width: 480px;
+            }
+            
+            /* Image expands to width of surround */
+            img.cloudzoom {
+                width:100%;
+            }
+            
+            /* CSS for slider - will expand to width of surround */
+            #thumbnails {
+                margin-left:20px;
+                margin-right:20px;
+                height:80px;
+                position:relative;
+            }
+/***********2nd css**************/
+/* CSS for lens */
+.cloudzoom-lens {
+    border:1px solid #888;
+    width:100px;
+    height:100px;
+    /* box-shadow: -0px -0px 10px rgba(0,0,0,0.40);*/
+    cursor:crosshair;
+    z-index: 9999;
+}
+/* CSS for zoom window. */
+.cloudzoom-zoom {
+    border:1px solid #888;
+    width:800px;
+    height:800px;
+    /* box-shadow: -0px -0px 10px rgba(0,0,0,0.40);*/
+	z-index: 9999;
+}
+/* CSS for zoom window in 'inside' mode. */
+.cloudzoom-zoom-inside {
+    border:none;
+    box-shadow:none;
+	z-index: 9999;
+}
+
+/* CSS for captions */
+.cloudzoom-caption {
+    display:none;   /* CSS captions should be hidden initially */
+    text-align: left;
+    background-color:#000;
+    color:#fff;
+    font-weight:bold;
+    padding:10px;
+    font-family: sans-serif;
+    font-size:11px;
+   
+}
+
+/* A blank image 
+.cloudzoom-blank {
+    background-image:url(blank.png);
+}*/
+
+/* The animated ajax loading image *
+.cloudzoom-ajax-loader {
+    background-image:url(ajax-loader.gif);
+    width:32px;
+    height:32px;
+}/
