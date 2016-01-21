@@ -100,25 +100,3 @@
   <% end %>
   </div>
 </div>
-<script>
-  $(document).ready(function(){
-    $('.delete-wish-item').click(function(){
-      var id = $(this).attr('wish-id');
-      var current_item = $(this)
-      $.ajax({
-        url: '/wished_products/'+id,
-        type: 'DELETE',
-        success:function(reponse){
-          $(".wishlist-msg").show().delay(3200).fadeOut(300);
-          current_item.parent().parent().parent().remove();
-          if ($("#line_items").find('tr').length == 0){
-            $("#line_items").append("<tr><td colspan='6'>Your wishlist is empty</td></tr>");
-          }
-        },
-        error:function(){
-          alert('Error: Unable to delete item.');
-        }
-      });
-    })
-  })
-</script>

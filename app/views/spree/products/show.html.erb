@@ -72,6 +72,7 @@
             
           </div>
         </div>
+        <span class="wishlist-success-msg">This item has been added in your wishlist.</span>
       </div>
   </div>
   </div>
@@ -249,7 +250,33 @@
     });
   }); 
   if( $("#product-thumbnails").children().length <= 6){
-    $("#product-thumbnails").parent().parent().find('i').first().addClass('inactive')
-    $("#product-thumbnails").parent().parent().find('i').last().addClass('inactive')
+    $('#thumbnails').find('i').addClass('inactive');
   }
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  $(document).ready(function(){
+    $('.btn-hot-wish').click(function(e){
+      e.preventDefault();
+      $.ajax({
+        url: '/wished_products',
+        type: 'POST',
+        data: $("#new_wished_product").serialize(),
+        success: function(response){
+          console.log(response.wishlist);
+          $('.wishlist-count').text(response.wishlist)
+          if(response.wishlist){
+            $('.wishlist-success-msg').show().delay(3200).fadeOut(300);
+          }
+          else{
+            window.location.replace('http://192.168.9.145:3000/login');
+          }
+        },
+        error: function(e){
+          console.log('Error: Unable to add in wishlist.')
+        }
+      });
+    });
+  });
 </script>

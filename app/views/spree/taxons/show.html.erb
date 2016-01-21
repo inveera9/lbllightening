@@ -46,7 +46,7 @@
             <div class="col-lg-7 col-md-7 col-sm-12 col-sx-12">
               <strong class="view-type"><%= @taxon.name.capitalize %></strong>
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-12 col-sx-12">
+            <!-- <div class="col-lg-5 col-md-5 col-sm-12 col-sx-12">
               <div class="form-group">
                 <label for="products" class="col-md-4 control-label text-right">
                   <strong class="view-type">Sort By: </strong>
@@ -57,11 +57,10 @@
                     <option>Top Rated</option>
                     <option>Price (Low to High)</option>
                     <option>Price (High to Low)</option>
-                    <option>5</option>
                   </select>
                 </div>
               </div>
-            </div>
+            </div> -->
          </div>
       </div>
       <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon } %>

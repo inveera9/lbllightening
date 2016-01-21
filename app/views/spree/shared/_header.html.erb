@@ -54,21 +54,81 @@
                 <% end %>
                 </ul>
               </li>
-              <li>
+              <!-- <li class="dropdown">
                 <div class="cart-tx">
-                  <%= link_to cart_path do %>
+                  <%#= link_to cart_path do %>
                     <span>
                       <img src="/assets/cart.png" >
                     </span>
                     <span class="cart-tx2">
-                      <% if  simple_current_order.item_count.zero? %>
+                      <%# if  simple_current_order.item_count.zero? %>
                         0
-                      <% else %>
-                        <%= simple_current_order.item_count %>
-                      <% end %>
+                      <%# else %>
+                        <%#= simple_current_order.item_count %>
+                      <%# end %>
                     </span><br> 
                     <span class="sml-tx">CHECKOUT</span>
-                  <% end %>
+                  <%# end %>
+                </div>
+              </li> -->
+              <li class="dropdown">
+                <div id="" class="">
+                  <div class="top-cart-box">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                        <div class="cart-tx">
+                          <%= link_to cart_path, class: "dropdown-toggle" do %>
+                            <span><img src="/assets/cart.png" ></span>
+                            <span class="cart-tx2">
+                              <% if  simple_current_order.item_count.zero? %>
+                                0
+                              <% else %>
+                                <%= simple_current_order.item_count %>
+                              <% end %>
+                            </span><br> 
+                            <span class="sml-tx">CHECKOUT</span>
+                          <% end %>
+                        </div>
+                        <div class="cart-hide-box">
+                          <ul role="menu" class="dropdown-menu dropdown-cart" style="display: none;">
+                            <% if current_order.present? && current_order.line_items.any? %>
+                              <% current_order.line_items.each do |line_item|%>
+                                <% product = line_item.variant.product %>
+                                <% url = spree.product_url(product) %>
+                                <li>
+                                  <span class="item">
+                                    <span class="item-left">
+                                      <% if product.images.size > 0 %>
+                                        <%= image_tag(product.images.first.attachment.url(:small), class: "img-responsive cart-box-small-img") %>
+                                      <% else %>
+                                        <%= image_tag'default_product.jpeg' ,class: "img-responsive cart-box-small-img" %>
+                                      <% end %>
+                                      <span class="item-info">
+                                        <span>
+                                          <%= truncate(product.name, length: 20) %>
+                                        </span>
+                                        <span><%= display_price(product) %></span>
+                                      </span>
+                                    </span>
+                                    <span class="item-right">
+                                      <button class="btn btn-xs btn-danger pull-right">x</button>
+                                    </span>
+                                  </span>
+                                </li>
+                              <% end %>
+                              <li>
+                                <%= link_to "View Cart", cart_path, class:"text-center" %></li>
+                            <% else %>
+                              <li>Your cart empty</li>
+                              <li>
+                                <%= link_to "Continue Shopping",products_path, class:"text-center" %>
+                              </li>
+                            <% end %>
+                          </ul>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </li>
             </ul>

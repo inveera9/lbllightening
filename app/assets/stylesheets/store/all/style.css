@@ -187,6 +187,9 @@ body{
     right: 20px;
     bottom: 20px;
   }
+  .cart-hide-box{
+   display:block;
+  }
 }
 @media only screen and (min-width: 1024px) {
   .cd-top {
@@ -442,8 +445,28 @@ body{
 @media only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 568px) { 
+.buy-btn-wish {
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+}
+.border-bottom-wishlist ul{
+  padding: 0;
+  margin-top: 10px;
+}
+.wishlist-repeater a{
+  text-align: center !important;
+}
+.heart-wishlist {
+  margin-left: 17px !important;
+}
+.innovative-text {
+  display: none;
+}
 .hide-txt{
   display:none;
+}
+.cart-hide-box{
+ display:block;
 }
 .wishlits-btn-margin{
   margin: 0 !important;
@@ -1837,6 +1860,159 @@ label.star:before {
     margin-right: 10px;
 }
 /*==== multiple product slider end ===========*/
+/*==== add cart all product start in header ===========*/
+.top-cart-box ul.dropdown-cart{
+    min-width:250px;
+}
+.top-cart-box ul.dropdown-cart li .item{
+    display:block;
+    padding:3px 10px;
+    margin: 3px 0;
+ border-bottom:solid 1px #f3f3f3;
+}
+.top-cart-box ul.dropdown-cart li .item:hover{
+    /*background-color:#f3f3f3;*/
+ border-bottom:solid 1px #f3f3f3;
+}
+.top-cart-box ul.dropdown-cart li .item:after{
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.top-cart-box ul.dropdown-cart li .item-left{
+    float:left;
+}
+.top-cart-box ul.dropdown-cart li .item-left img,
+.top-cart-box ul.dropdown-cart li .item-left span.item-info{
+    float:left;
+}
+.top-cart-box ul.dropdown-cart li .item-left span.item-info{
+    margin-left:10px;   
+}
+.top-cart-box ul.dropdown-cart li .item-left span.item-info span{
+    display:block;
+}
+.top-cart-box ul.dropdown-cart li .item-right{
+    float:right;
+}
+.top-cart-box ul.dropdown-cart li .item-right button{
+    margin-top:14px;
+}
+.cart-box-small-img{
+ width:50px;
+}
+/*==== add cart all product end in header ===========*/
+/*==== wish list start ===========*/
+.my-wish-account .nav > li > a:focus, .nav > li > a:hover{
+ background:none;
+}
+.my-wish-account  .nav > li {
+ padding:15px 0 0;
+}
+.my-wish-account  ul{
+ margin-top:15px;
+}
+.my-wish-account  ul li p{
+ padding-left:22px;
+ color:#eb3207;
+}
+.my-wish-account  ul li p a{
+ color:#5bc0de;
+}
+.my-wish-account  li {
+ border-bottom:dotted 1px #ccc;
+}
+.recommend{
+ padding-right:8px;
+ font-size:12pt;
+}
+.my-wish-account-right .thumbnail, .well{
+ background:none;
+ border:none;
+ box-shadow:none;
+ border-bottom:dotted 1px #ccc;
+ margin-bottom: 20px;
+ padding: 10px 0;
+}
+.my-wish-account-right .form-control{
+ background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: none;
+    color: #555;
+    display: block;
+    font-size: 12px;
+    height: 28px;
+    line-height: 1.42857;
+    padding: 0 12px;
+    transition: none 0s ease 0s ;
+    width: 100%;
+}
+.wish-text-right{
+ font-size:11pt!important;
+ color:#eb3207 !important;
+ font-weight:normal;
+}
+.heart-wishlist{
+  color:#eb3207;
+  margin-left:32px;
+  padding-right:3px;
+}
+.wish-line-height-text i{
+ color:#eb3207;
+ padding-right:8px;
+}
+.wish-line-height-text p{
+ margin: 0 0 0px;
+}
+.star-and-counter{
+ float:left;
+ padding-right:10px;
+}
+.counter-star-people{
+ padding:12px 0 0 0px;
+}
+.free-text-background{
+ background:#fff3b0 ;
+ padding:2px 5px 2px 5px;
+ font-size:10pt;
+}
+.in-out-stock{
+ color:#5bc0de;
+ font-size:12pt;
+ padding-top:5px;
+}
+.price-wish-text{
+ color:#000;
+ font-size:11pt;
+ padding-top:5px;
+}
+.buy-btn-wish {
+ margin-top:20px;
+ margin-left:39px;
+}
+
+.delete-from-wish{
+ margin-left:39px;
+ margin-top:15px;
+}
+.wishlist-repeater{
+ margin-bottom:15px;
+}
+.border-bottom-wishlist{
+ border-bottom:dotted 1px #ccc;
+ margin-bottom:15px;
+ padding:15px 0;
+}
+.innovative-text{
+ color:#5bc0de;
+}
+/*==== wish list end ===========*/
 /* Custom CSS start */
 .list-group-item{
   border:none;
@@ -2119,5 +2295,14 @@ label.star:before {
 }
 #thumbnails .inactive{
   display: none;
+}
+.wishlist-success-msg{
+  color: #ff8500;
+  font-size: 13pt;
+  padding: 16px;
+  display: none;
+}
+.wishlist-info{
+  margin-left: 15px !important;
 }
 /* Custom CSS start */
