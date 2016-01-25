@@ -1,0 +1,39 @@
+<table class="table q-cart-table">
+  <thead>
+    <tr>
+      <th width="12%">Item Details</th>
+      <th width="23%">Description</th>
+      <th width="13%">Price</th>
+      <th width="12%">Quantity</th>
+      <th width="24%">Showing Availability at </th>
+      <th width="15%">Subtotal</th>
+      <th width="1%"> </th>
+    </tr>
+  </thead>
+  <tbody class="q-line-item">
+    <% current_order.line_items.each do |line_item|%>
+      <% variant = line_item.variant %>
+      <%= order_form.fields_for :line_items, line_item do |item_form| %>
+        <% product = line_item.variant.product %>
+        <% url = spree.product_url(product) %>
+        <tr>
+          <td width="12%">
+            <% if variant.images.length == 0 %>
+              <%= link_to small_image(variant.product), variant.product %>
+            <% else %>
+              <%= link_to image_tag(variant.images.first.attachment.url(:small)), variant.product %>
+            <% end %>
+          </td>
+          <td><%= link_to line_item.name, product_path(variant.product) %><br>from <%= variant.product.taxons.first.name.capitalize %></td>
+          <td><%= line_item.single_money.to_html %> </td>
+          <td><%= item_form.number_field :quantity, min: 0, class: "form-control line_item_quantity", size: 5 %></td>
+          <td>Item Available<br></td>
+          <td class="free-cart-tex-black2">You Pay: <%= line_item.display_amount.to_html unless line_item.quantity.nil? %></td>
+          <td>
+            <a class="delete-from-quick-cart" item-id="<%= line_item.id %>" title="Delete Item"><span class="glyphicon glyphicon-remove-circle"></span></a>
+            <%#= link_to content_tag(:span, '', class: 'glyphicon glyphicon-remove-circle'), 'javascritp:void(0)', class: 'delete-from-quick-cart', title: "Delete Item"%></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

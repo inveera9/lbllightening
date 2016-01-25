@@ -146,7 +146,7 @@
                 <% if (product.images + product.variant_images).uniq.size > 1 %>
                   <%= image_tag(product.images.first.attachment.url(:small), class: "img-responsive") %>
                 <% else %>
-                  <%= image_tag'default_product.jpeg' ,class: "img-responsive" %>
+                  <%#=  %>
                 <% end %>
               </div>
               <div class="col-md-8 no-padding">
@@ -205,7 +205,7 @@
                         <% if (product.images + product.variant_images).uniq.size > 1 %>
                           <%= image_tag(product.images.first.attachment.url, class: "img-responsive img-slide-bottom") %>
                         <% else %>
-                          <%= image_tag'default_product.jpeg' ,class: "img-responsive img-slide-bottom" %>
+                          <%#= image_tag 'default_product.jpeg' ,class: "img-responsive img-slide-bottom" %>
                         <% end %>
                       </div>
                       <div class="bottom-info">

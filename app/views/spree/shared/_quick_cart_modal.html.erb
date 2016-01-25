@@ -1,0 +1,70 @@
+<div class="modal-dialog cart-center-tx">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="shopping-cart-total">Shopping Cart 
+        <span class="counter-total">(<span class="q-item-count"><%=simple_current_order.item_count%></span> Item)
+          <div class="ajax-loader">
+            <img src="/assets/ajax-loader.gif">
+          </div>
+        </span>
+      </div>
+    </div>
+    <% if current_order.present? && current_order.line_items.any? %>
+      <%= form_for current_order, url: update_cart_path, html: { id: 'update-quick-cart' } do |order_form| %>
+        <span class="empty-cart-msg">Your cart is empty.</span>
+        <div class="modal-body">
+          <div class="table-responsive">
+            <span class="empty-cart-msg">Your cart is empty.</span>
+            <%= render partial: 'spree/orders/quick_cart_form', locals: { order_form: order_form } %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="cart-continue-popup text-left">
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+              <p class="free-cart-tex-delivery">Delivery and payment options can be selected later</p>
+              <p class=""><i class="fa fa-lock"></i> <strong>100%</strong> Safe and Secure Payments</p>
+              <p class=""><i class="fa fa-get-pocket"></i>  <strong>TrustPay:</strong> 100% Money Back Guarantee, 7 Days Easy Return Policy</p>
+              <div class="display-margin-top-bottom"></div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6">
+              <p class="q-order-total">You Pay</p>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-6">
+              <p class="free-cart-tex-black q-order-total"><%= order_form.object.display_total %></p>
+            </div>
+            <div class="buy-cart-bttn">
+              <a href="javascript:void(0)"><span class="cartbt"><button type="button" class="btn btn-hot text-uppercase btn-lg" data-dismiss="modal"> Continue shopping </button></span></a>
+              <%= button_tag class: 'btn btn-hot-wish text-uppercase btn-lg q-checkout-btn', id: 'checkout-link', name: 'checkout' do %>
+                <i class="fa fa-lock shpo-cart"></i> Secure <%= Spree.t(:checkout) %>
+              <% end %>
+            </div>
+          </div>                           
+        </div>
+      </div>
+    <% end %>
+    <% else %>
+      <span class="empty-cart-msg" style="display: block">Your cart is empty.</span>
+      <div class="modal-footer">
+        <div class="cart-continue-popup text-left">
+          <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+            <p class="free-cart-tex-delivery">Delivery and payment options can be selected later</p>
+            <p class=""><i class="fa fa-lock"></i> <strong>100%</strong> Safe and Secure Payments</p>
+            <p class=""><i class="fa fa-get-pocket"></i>  <strong>TrustPay:</strong> 100% Money Back Guarantee, 7 Days Easy Return Policy</p>
+            <div class="display-margin-top-bottom"></div>
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+            <div class="col-lg-7 col-md-7 col-sm-6 col-xs-6">
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-6">
+            </div>
+            <div class="buy-cart-bttn">
+              <a href="javascript:void(0)"><span class="cartbt"><button type="button" class="btn btn-hot text-uppercase btn-lg" data-dismiss="modal"> Continue shopping </button></span></a>
+            </div>
+          </div>                           
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
