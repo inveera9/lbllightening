@@ -8,12 +8,12 @@ body{
 	font-family: 'Signika', sans-serif;
 }
 .orange-circle-button {
-	border: 3px solid #1dbccd;
-	color: #000;
-    background-color: #fff;
-	margin: auto;
-	height: 46px;
-	width: 121px;
+	background-color: #fff !important;
+    border: 3px solid #1dbccd;
+    border-radius: 1px;
+    color: #000 !important;
+    margin: auto;
+    width: 121px;
 }
 .orange-circle-button:hover {
 	color: #000;

@@ -44,13 +44,14 @@
 <div class="text-right form-buttons" data-hook="buttons">
   <%= submit_tag Spree.t(:save_and_continue), :class => 'btn btn-hot text-uppercase btn-lg' %>
   <% if try_spree_current_user %>
-    <span class="my-check" data-hook="save_user_address">
+    <span class="my-check save-my-add-sec" data-hook="save_user_address">
       <!-- <input type="checkbox" checked="checked" value="1" id="order_use_billing" name="order[use_billing]" class="css-checkbox"> -->
       <%= check_box_tag 'save_user_address', '1',try_spree_current_user.respond_to?(:persist_order_address), class: "css-checkbox" %><!-- 
       <label for="order_use_billing" id="use_billing" class="nowrap css-label">Use Billing Address
       </label> -->
       <%= label_tag :save_user_address, Spree.t(:save_my_address), class: "nowrap css-label" %>
     </span>
+     <div class="clearfix"></div>
     <!-- <span data-hook="save_user_address">
       &nbsp; &nbsp;
       <%#= check_box_tag 'save_user_address', '1', try_spree_current_user.respond_to?(:persist_order_address) %>

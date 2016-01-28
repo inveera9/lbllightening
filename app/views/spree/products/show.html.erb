@@ -38,7 +38,7 @@
                 <p class="prd-details-sub-title">from <%= @product.taxons.first.taxonomy.name %></p>
               </div>
             </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12 wish-list-padding-col">
               <div class="prd-details-price-outer">
                 <div id="cart-form" data-hook="cart_form">
                   <%= render :partial => 'cart_form' %>
@@ -142,7 +142,7 @@
           <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
           <div class="box-1-related">
             <div class="lib-panel">
-              <div class="col-md-4 no-pad-releated-product">
+              <div class="col-md-4 col-sm-6 col-xs-6 no-pad-releated-product">
                 <% if (product.images + product.variant_images).uniq.size > 1 %>
                   <%= image_tag(product.images.first.attachment.url(:small), class: "img-responsive") %>
                 <% else %>
@@ -188,53 +188,55 @@
           </div>
         </div>
       </div>
-      <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <% products = popular_products(18) %>
-          <% count = 0%>
-          <% products.each_slice(6) do |group| %>
-            <div class="item <%= count == 0 ? 'active' : '' %>">
-              <div class="row">
-                <% count +=1 %>
-                <% group.each do |product| %>
-                  <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
-                  <div class="col-sm-2">
-                    <div class="bottom-col-item">
-                      <div class="bottom-photo">
-                        <% if (product.images + product.variant_images).uniq.size > 1 %>
-                          <%= image_tag(product.images.first.attachment.url, class: "img-responsive img-slide-bottom") %>
-                        <% else %>
-                          <%#= image_tag 'default_product.jpeg' ,class: "img-responsive img-slide-bottom" %>
-                        <% end %>
-                      </div>
-                      <div class="bottom-info">
-                        <div class="text-center bottom-separator clear-left">
-                          <div class="bottom-price">
-                            <h5 title="<%=product.name%>"><%= truncate(product.name, length: 20) %></h5>
-                            <h5 class="price-text-color"><%= display_price(product) %></h5>
-                          </div>
-                          <div class="rating hidden-sm">
-                            <% stars = product.stars %>
-                            <div class="average-rating poplar-rating pull-left" title="<%= txt_stars(stars) %>">
-                              <%= render 'spree/reviews/stars', stars: stars %>
+      <div class="bottom-mob-slider">
+        <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <% products = popular_products(18) %>
+            <% count = 0%>
+            <% products.each_slice(6) do |group| %>
+              <div class="item <%= count == 0 ? 'active' : '' %>">
+                <div class="row">
+                  <% count +=1 %>
+                  <% group.each do |product| %>
+                    <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
+                    <div class="col-sm-2">
+                      <div class="bottom-col-item">
+                        <div class="bottom-photo">
+                          <% if (product.images + product.variant_images).uniq.size > 1 %>
+                            <%= image_tag(product.images.first.attachment.url, class: "img-responsive img-slide-bottom") %>
+                          <% else %>
+                            <%#= image_tag 'default_product.jpeg' ,class: "img-responsive img-slide-bottom" %>
+                          <% end %>
+                        </div>
+                        <div class="bottom-info">
+                          <div class="text-center bottom-separator clear-left">
+                            <div class="bottom-price">
+                              <h5 title="<%=product.name%>"><%= truncate(product.name, length: 20) %></h5>
+                              <h5 class="price-text-color"><%= display_price(product) %></h5>
                             </div>
-                          </div>
-                          <div class="bottom-price">
-                          <div class="add-color-chng">
-                            <i class="fa fa-shopping-cart"></i>
-                            <%= link_to "Add to cart", url, class: "hidden-sm" %>
-                            <p></p>
-                           </div>
+                            <div class="rating hidden-sm">
+                              <% stars = product.stars %>
+                              <div class="average-rating poplar-rating pull-left" title="<%= txt_stars(stars) %>">
+                                <%= render 'spree/reviews/stars', stars: stars %>
+                              </div>
+                            </div>
+                            <div class="bottom-price">
+                            <div class="add-color-chng">
+                              <i class="fa fa-shopping-cart"></i>
+                              <%= link_to "Add to cart", url, class: "hidden-sm" %>
+                              <p></p>
+                             </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                <% end %>
+                  <% end %>
+                </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

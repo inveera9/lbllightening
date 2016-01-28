@@ -182,36 +182,49 @@
   </div>
 
 <script>
+  function update_quantity(ele){
+    var current = $(this);
+    $('.ajax-loader').show();
+    update_cart(current)
+  }
+  function update_cart(current){
+    $.ajax({
+      url: '/cart',
+      type: 'PATCH',
+      data: $("#update-quick-cart").serialize(),
+      success: function(response){
+        console.log(response);
+        if (response.order.item_count <= 0){ 
+          $("#myModal .modal-body").remove();
+          $('.q-order-total').remove();
+          $('.q-checkout-btn').remove();
+          $('.empty-cart-msg').show();
+        }else{
+          $('.q-order-total').text("$"+response.order.total)
+        }
+        $('.q-item-count').text(response.order.item_count);
+        $('.cart-tx2').text(response.order.item_count);
+        $('.ajax-loader').hide();
+        //current.parent().parent().remove();
+      },
+      error: function(error){
+        console.log("Error: Unable to delete.")
+      }
+    });
+  }
   $(document).ready(function(){
     
+    $('.item_quantity').click(function(){
+      console.log('ddf')
+    });
+
     $('.delete-from-quick-cart').click(function(){
       var current = $(this)
-      var id = $(this).attr('item-id');
+      current.parent().parent().find('input').attr('value', 0)
       $('.ajax-loader').show();
-      $.ajax({
-        url: '/cart',
-        type: 'PATCH',
-        data: $("#update-quick-cart").serialize() + '&id=' + id,
-        success: function(response){
-          console.log(response);
-          if (response.order.item_count <= 0){ 
-            $("#myModal .modal-body").remove();
-            $('.q-order-total').remove();
-            $('.q-checkout-btn').remove();
-            $('.empty-cart-msg').show();
-          }else{
-            $('.q-order-total').text("$"+response.order.total)
-          }
-          $('.q-item-count').text(response.order.item_count);
-          $('.cart-tx2').text(response.order.item_count);
-          $('.ajax-loader').hide();
-          current.parent().parent().remove();
-        },
-        error: function(error){
-          console.log("Error: Unable to delete.")
-        }
-      });
+      update_cart(current)
     })
+
     var width = $(window).width();
 
     if (width < 768){

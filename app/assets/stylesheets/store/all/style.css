@@ -373,6 +373,7 @@ body{
   position: absolute;
   right: 21px;
   top: 6px;
+  text-align: center;
   color:#fff !important;
 }
 .sml-tx{
@@ -444,7 +445,77 @@ body{
 }
 @media only screen 
 and (min-device-width : 320px) 
-and (max-device-width : 568px) { 
+and (max-device-width : 568px) {
+.bottom-mob-slider .hidden-xs{
+  display: block !important;
+  height: 337px;
+  overflow: hidden;
+}
+.hidden-xs{
+  display: block !important;
+}
+.bottom-mob-slider .poplar-rating{
+  margin-left: 104px;
+}
+.cart-item-quantity input[type="number"]{
+  width: 100% !important;
+}
+#order .btn-hot-wish{
+  width: 31%;
+}
+.save-my-add-sec{
+  float: left;
+  margin-top: 10px;
+}
+.btn-hot{
+  width: 100%;
+}
+#clear_cart_link a.btn-hot{
+  width: 100%;
+}
+#empty-cart{
+  padding: 0 1px 0 10px;
+}
+#update-cart .btn-hot{
+  margin-top: 10px;
+  width: 100%;
+}
+.positon-top-box{
+  position: relative;
+  left:110px;
+  top:-60px;
+  font-size: 9pt !important;
+  width: 66% !important;
+}
+.positon-add-cart-box{
+  font-size: 9pt !important;
+}
+.wish-postion-top{
+  position: relative;
+  top: 0px !important;
+} 
+.tabs-bg-outer .nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus, .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+  padding:10px 15px !important;
+}
+.wishlist-info{
+  margin-left: 0px !important;
+  font-size: 9pt !important;
+}
+#inside-product-cart-form .input-group-addon, .input-group-btn{
+  width: 50%;
+}
+.btn-hot-wish {
+    width: 100%;
+}
+.wish-list-padding-col{
+  padding: 0 !important;
+}
+.footer-copyright .pull-right{
+  float: none !important;
+}
+#sidebar_products_search .buy-cart-bttn .btn{
+  width: 90% !important;
+}
 .nav > li{
     display: block;
     position: static;
@@ -467,9 +538,9 @@ and (max-device-width : 568px) {
 .text-right{
  text-align:center;
 }
-.list-inline{
+/*.list-inline{
  margin-left: 0; 
-}
+}*/
 .buy-btn-wish {
     margin-left: 0px !important;
     margin-top: 0px !important;
@@ -533,11 +604,11 @@ and (max-device-width : 568px) {
   margin-bottom:15px !important;
 }
 .buy-cart-bttn .btn{
-  width:100% !important;
+  /* width:100% !important;*/
 }
 .buy-cart-bttn {
   margin-top:15px !important;
-  margin-bottom:15px !important;
+  margin-bottom:15px !important;/**/
 }
 .srch-lbl {
   text-align:center;
@@ -561,13 +632,14 @@ and (max-device-width : 568px) {
 }
 .cart-tx2 {
     position: absolute;
-    right: 18px;
+    right: 28px;
     top: 6px;
+    text-align: center;
     color: #fff !important;
 }
 .list-inline {
     padding-left: 0;
-    margin-left: -14px;
+    margin-left: -22px;
     list-style: none;
 }
 .free-shipping ul li {
@@ -1041,9 +1113,6 @@ a.socialIcon:hover, .socialHoverClass {
 .buy-cart-bttn .btn-hot-wish:hover {
   color: #fff;
   background:#eb7b02;
-}
-.tabs-bg-outer {
-  margin-top:25px;
 }
 .tabs-bg-outer .nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus, .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
   background:#666;
@@ -1856,7 +1925,9 @@ label.star:before {
 .bottom-col-item .bottom-photo img
 {
     margin: 0 auto;
-    width: 100%;
+    width: 50%;
+    padding: 15px;
+    height: auto;
 }
 .bottom-col-item .bottom-price
 {
@@ -1953,7 +2024,7 @@ label.star:before {
 /*==== add cart all product end in header ===========*/
 /*==== wish list start ===========*/
 .my-wish-account .nav > li > a:focus, .nav > li > a:hover{
- background:none;
+ /*background:none;*/
 }
 .my-wish-account  .nav > li {
  padding:15px 0 0;
@@ -2432,10 +2503,13 @@ label.star:before {
   display: none;
 }
 .wishlist-info{
-  margin-left: 15px !important;
+  margin-left: 10px !important;
 }
 .ajax-loader{
   display: none;
+  float: left;
+  margin-right: 10px;
+  margin-top: -2px;
 }
 .empty-cart-msg{
   margin-left: 16px; 
@@ -2454,4 +2528,16 @@ label.star:before {
 .delete-from-quick-cart{
   cursor: pointer;
 }
+.wish-text-btn{
+  font-size: 10pt !important;
+  padding: 0 10px;
+}
+.wish-postion-top{
+  position: relative;
+ 
+}
+.wish-list-padding-col{
+  padding-left: 15px;
+}
+
 /* Custom CSS start */

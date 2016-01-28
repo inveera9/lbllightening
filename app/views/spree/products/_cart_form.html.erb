@@ -1,7 +1,8 @@
+<div class="col-md-6">
 <%= form_for :order, :url => populate_orders_path do |f| %>
   <div class="row" id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
     <% if @product.price_in(current_currency) and !@product.price.nil? %>
-      <div data-hook="product_price" class="col-md-6">
+      <div data-hook="product_price">
         <div id="product-price">
           <div>
             <span class="lead price selling" itemprop="price">
@@ -12,7 +13,7 @@
           <p class="free-ship">free shipping <span>on most orders</span></p>
           <div class="rating hidden-sm">
             <% stars = @product.stars %>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-4 col-xs-6">
               <div class="average-rating pull-left" title="<%= txt_stars(stars) %>">
                 <%= render 'spree/reviews/stars', stars: stars %>
               </div>
@@ -34,7 +35,6 @@
           <div class="media-body">
             <p>
             <a class="btn btn-xs btn-default pnit" href="#"><i class="fa fa-pinterest"></i> Pinterest </a>
-            <a class="btn btn-xs btn-default" href="#"><span class="glyphicon glyphicon-heart"></span> Favorite</a>
             <a class="btn btn-xs btn-default frnd" href="#"><i class="fa fa-paper-plane"></i> Share with a friend</a>
             </p>
           </div>
@@ -51,10 +51,9 @@
             <strong class="free-ship">Quantity </strong><br>
             <%= number_field_tag :quantity, 1, :class => 'title form-control', :min => 1 %>
           </div>
-          <br/>
           <div class=" input-group buy-cart-bttn">
             <span class="input-group-btn">
-              <%= button_tag :class => 'btn btn-hot text-uppercase btn-lg', :id => 'add-to-cart-button', :type => :submit do %>
+              <%= button_tag :class => 'btn btn-hot text-uppercase btn-lg positon-add-cart-box', :id => 'add-to-cart-button', :type => :submit do %>
                 <%= Spree.t(:add_to_cart) %>
               <% end %>
             </span>
@@ -96,26 +95,6 @@
           <% else %>
             <%= hidden_field_tag "variant_id", @product.master.id %>
           <% end %>
-          <!-- <div class="drop-lis-fom">
-            <strong class="time-lead">Lamp Color </strong>
-              <select class="form-control" name="products">
-                <option>04- Black Lacquer</option>
-                <option>03- White Lacquer</option>
-                <option>02- White Lacquer</option>
-                <option>01- White Lacquer</option>
-             </select>
-          </div>
-          <div class="drop-lis-fom dolr">
-            <strong class="time-lead"> Lamp Type </strong>
-              <select class="form-control" name="products">
-                <option>INC- Incandescent</option>
-                <option>CFE- Compact fluorescent</option>
-             </select>
-          </div> -->
-          <div class="drop-lis-fom dolr">
-            <strong class="time-lead">Lead Time </strong>
-            <p>In Stock models ship within 1-3 days. All other models ship within 7-9 weeks.</p>
-          </div>
         </div>
       </div> 
     <% else %>
@@ -127,3 +106,32 @@
     
   </div>
 <% end %>
+<div>
+  <div class="col-md-3 col-sm-12 col-xs-12">
+  </div>
+  <div class="col-md-9 col-sm-12 col-xs-12 wish-postion-top">
+    <% if spree_current_user %>
+      <div id="wishlist-form">
+        <%= form_for Spree::WishedProduct.new do |f| %>
+          <%= f.hidden_field :variant_id, value: @product.master.id %>
+          <%= f.hidden_field :quantity %>
+          <div class="col-md-2"></div>
+          <div class="col-md-10 wish-list-padding-col">
+            <button type="submit" class="wishlits-btn-margin btn btn-hot-wish text-uppercase btn-lg wishlist-btn positon-top-box">
+              <i class="fa fa-heart"></i> <%= Spree.t(:add_to_wishlist) %>
+            </button>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-sx-12 wish-list-padding-col">
+  <div class="detail-ryt-end-outer">
+    <div class="drop-lis-fom dolr">
+      <strong class="time-lead">Lead Time </strong>
+      <p>In Stock models ship within 1-3 days. All other models ship within 7-9 weeks.</p>
+    </div>
+  </div>
+</div>

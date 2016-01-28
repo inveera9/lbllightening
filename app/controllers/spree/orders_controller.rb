@@ -15,13 +15,13 @@ module Spree
 
     def update
       if request.xhr?
-        params[:order][:line_items_attributes].each do |item|
-          if item[1][:id] == params[:id]
-            item[1][:quantity] = 0
-          end
-        end
-        @order.contents.update_cart(params[:order])
         #byebug
+        # params[:order][:line_items_attributes].each do |item|
+        #   if item[1][:id] == params[:id]
+        #     #item[1][:quantity] = 0
+        #   end
+        # end
+        @order.contents.update_cart(params[:order])
         render json: {order: @order}
       else  
         if @order.contents.update_cart(order_params)
