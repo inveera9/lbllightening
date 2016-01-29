@@ -185,18 +185,23 @@
   function update_quantity(ele){
     var current = $(this);
     $('.ajax-loader').show();
-    update_cart(current)
+    var id = "";
+    update_cart(current,id)
+    var quantity = $(ele).val();
+    var sub_price = $(ele).parent().parent().find('td.q-single-total').text();
+    var subtotal = parseInt(sub_price.split('.')[0].replace(/[^a-zA-Z0-9]/g, ''))* parseInt(quantity)
+    $(ele).parent().parent().find('span.q-subtotal').text("$"+subtotal+".00");
   }
-  function update_cart(current){
+  function update_cart(current, id){
     $.ajax({
       url: '/cart',
       type: 'PATCH',
-      data: $("#update-quick-cart").serialize(),
+      data: $("#update-quick-cart").serialize() + '&id=' + id,
       success: function(response){
-        console.log(response);
         if (response.order.item_count <= 0){ 
           $("#myModal .modal-body").remove();
           $('.q-order-total').remove();
+          $('.q-order-total-pay').remove();
           $('.q-checkout-btn').remove();
           $('.empty-cart-msg').show();
         }else{
@@ -205,7 +210,6 @@
         $('.q-item-count').text(response.order.item_count);
         $('.cart-tx2').text(response.order.item_count);
         $('.ajax-loader').hide();
-        //current.parent().parent().remove();
       },
       error: function(error){
         console.log("Error: Unable to delete.")
@@ -213,16 +217,14 @@
     });
   }
   $(document).ready(function(){
-    
-    $('.item_quantity').click(function(){
-      console.log('ddf')
-    });
 
     $('.delete-from-quick-cart').click(function(){
       var current = $(this)
-      current.parent().parent().find('input').attr('value', 0)
+      current.parent().parent().find('input').attr('value', 0);
+      var id = $('.delete-from-quick-cart').attr('item-id')
       $('.ajax-loader').show();
-      update_cart(current)
+      update_cart(current,id)
+      current.parent().parent().remove();
     })
 
     var width = $(window).width();

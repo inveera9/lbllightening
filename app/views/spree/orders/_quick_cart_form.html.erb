@@ -25,10 +25,10 @@
             <% end %>
           </td>
           <td><%= link_to line_item.name, product_path(variant.product) %><br>from <%= variant.product.taxons.first.name.capitalize %></td>
-          <td><%= line_item.single_money.to_html %> </td>
+          <td class="q-single-total"><%= line_item.single_money.to_html %> </td>
           <td><%= item_form.number_field :quantity, min: 0, class: "form-control line_item_quantity", size: 5, onchange: "update_quantity(this)" %></td>
           <td>Item Available<br></td>
-          <td class="free-cart-tex-black2">You Pay: <%= line_item.display_amount.to_html unless line_item.quantity.nil? %></td>
+          <td class="free-cart-tex-black2"><span class="q-subtotal"><%= line_item.display_amount.to_html unless line_item.quantity.nil? %></span></td>
           <td>
             <a class="delete-from-quick-cart" item-id="<%= line_item.id %>" title="Delete Item"><span class="glyphicon glyphicon-remove-circle"></span></a>
           </td>
