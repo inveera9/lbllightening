@@ -5,6 +5,6 @@
   <% if @product.images.size > 0 %>
     <%= product_image(@product, :itemprop => "image") %>
   <% else %>
-    <%#= image_tag 'default_product.jpeg' %>
+    <%= image_tag 'default_product.jpeg' %>
   <% end %>
 <% end %>

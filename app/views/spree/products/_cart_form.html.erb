@@ -34,8 +34,7 @@
           <div class="clearfix"></div>
           <div class="media-body">
             <p>
-            <a class="btn btn-xs btn-default pnit" href="#"><i class="fa fa-pinterest"></i> Pinterest </a>
-            <a class="btn btn-xs btn-default frnd" href="#"><i class="fa fa-paper-plane"></i> Share with a friend</a>
+              <%= social_share_button_tag(@product.name, :popup => "true") %>
             </p>
           </div>
           <% if @product.master.can_supply? %>

@@ -502,7 +502,7 @@ and (max-device-width : 568px) {
   font-size: 9pt !important;
 }
 #inside-product-cart-form .input-group-addon, .input-group-btn{
-  width: 50%;
+  width: 82%;
 }
 .btn-hot-wish {
     width: 100%;

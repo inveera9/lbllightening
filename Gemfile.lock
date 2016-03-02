@@ -316,6 +316,9 @@ GEM
     select2-rails (3.5.9.1)
       thor (~> 0.14)
     sixarm_ruby_unaccent (1.1.1)
+    social-share-button (0.1.10)
+      coffee-rails
+      sass-rails
     spring (1.6.2)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -376,6 +379,7 @@ DEPENDENCIES
   rails (= 4.2.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  social-share-button
   spree!
   spree_auth_devise!
   spree_gateway!
