@@ -5,12 +5,16 @@
         <div class="my-wish-account-right">
           <div class="well well-sm">
            <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12"><strong class="wish-text-right">WISHLIST </strong>(<span class="wishlist-count"><%=@wishlist.wished_products.size %></span> Items)<span class=""> <i class="fa fa-heart heart-wishlist"></i> Recently Added</span></div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12"><strong class="wish-text-right">WISHLIST </strong>(
+              <span class="wishlist-count">
+                <%= @wishlist.present? ? @wishlist.wished_products.size : 0%>
+              </span> Items)
+              <span class=""> <i class="fa fa-heart heart-wishlist"></i> Recently Added</span></div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12 innovative-text">BEST DESIGNS OF 2015 <span class="wish-text-right">NEW INNOVATIVE MODERN LIGHTING</span></div>
            </div>
           </div>
           </div>
-        <% if @wishlist.wished_products.size > 0 %>
+        <% if @wishlist.present? && @wishlist.wished_products.size > 0 %>
           <% @wishlist.wished_products.each do |wish|
             variant = wish.variant
             product = variant.product 
