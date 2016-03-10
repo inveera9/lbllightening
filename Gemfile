@@ -53,3 +53,4 @@ gem 'spree_wishlist', github: 'spree-contrib/spree_wishlist', branch: '3-0-stabl
 gem 'spree_reviews', github: 'spree-contrib/spree_reviews', branch: '3-0-stable'
 gem 'spree_paypal_express', github: 'spree-contrib/better_spree_paypal_express', branch: '3-0-stable'
 gem 'social-share-button'
+gem 'spree_static_content', github: 'spree-contrib/spree_static_content', branch: '3-0-stable'
