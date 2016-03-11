@@ -1,79 +1,91 @@
 <footer class="foter-bg">
   <div class="container">
     <div class="row">
-  
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-      <p class="ship-box-title">Need Free LED Lighting Advice <br> 
-      <span class="ship-box-content">Call us on 000-000-0000 to speak with our friendly lighting experts.</span>
-      </p>
-      <div>
-      </div>
-    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-right">
-      <p class="ship-box-title">COMPANY NAME  CUSTOMER SUPPORT  <br> 
-      <span class="ship-box-content">customer@companyname.com</span>
-      </p>
-    </div>
-    <div class="clearfix"></div>
-    <div class="ftr-bordr"></div>
-    <div class="container">
-      <div class="row">
-          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-              <p class="ftr-titl">GET TO KNOW US</p>
-      <ul class="ftr-ul">
-        <li><a href="/aboutus"><i class="fa fa-caret-right ftr-arw"></i> About Us</a></li>
-        <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> About Our Employees</a></li>
-    <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Job Opportunities</a></li>
-    <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Warranty</a></li>
-      </ul>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-              <p class="ftr-titl">HOW TO BUY</p>
-      <ul class="ftr-ul">
-        <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Showroom Locator</a></li>
-        <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Sales Representatives</a></li>
-    <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Internet Retailers</a></li>
-    <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Request a Catalog</a></li>
-      </ul>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-              <p class="ftr-titl">DOWNLOADS</p>
-      <ul class="ftr-ul">
-        <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Online Catalogs</a></li>
-        <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Request a Catalog</a></li>
-    <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Spec Sheets</a></li>
-    <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Instructions</a></li>
-<li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> High-Res Images</a></li>
-    <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> IES Files</a></li>
-    <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Videos</a></li>   
-      </ul>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-              <p class="ftr-titl">CONTACT US</p>
-      <ul class="ftr-ul">
-        <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Customer Service</a></li>
-        <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Feedback</a></li>
-    <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Login</a></li>
-      </ul>
-    </div>
-    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-              <p class="ftr-titl">MEDIA</p>
-      <ul class="ftr-ul">
-        <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Media Contact</a></li>
-        <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Online Catalogs</a></li>
-    <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> News</a></li>
-      </ul>
-            </div>
-      <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-              <p class="ftr-titl">TOOLS</p>
-      <ul class="ftr-ul">
-        <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Product Configurator</a></li>
-        <li><a href="#"><i class="fa fa-caret-right ftr-arw"></i> Site Map</a></li>
-      </ul>
-            </div>
-            </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <p class="ship-box-title">Need Free LED Lighting Advice <br> 
+        <span class="ship-box-content">Call us on 000-000-0000 to speak with our friendly lighting experts.</span>
+        </p>
+        <div>
         </div>
-</div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-right">
+        <p class="ship-box-title">COMPANY NAME  CUSTOMER SUPPORT  <br> 
+        <span class="ship-box-content">customer@companyname.com</span>
+        </p>
+      </div>
+      <div class="clearfix"></div>
+      <div class="ftr-bordr"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <p class="ftr-titl">GET TO KNOW US</p>
+            <ul class="ftr-ul">
+              <li>
+                <%= link_to about_us_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> About Us
+                <% end %>
+              </li>
+              <li>
+                <%= link_to careers_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> Job Opportunities
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <p class="ftr-titl">SHOP WITH CONFIDENCE</p>
+            <ul class="ftr-ul">
+              <li>
+                <%= link_to customer_service_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> Customer Service
+                <% end %>
+              </li>
+              <li>
+                <%= link_to shipping_delivery_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> Shipping + Delivery
+                <% end %>
+              </li>
+              <li>
+                <%= link_to price_guarantee_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> Price Guarantee
+                <% end %>
+              </li>
+              <li>
+                <%= link_to return_cancellation_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> Return + Cancellation
+                <% end %>
+              </li>
+              <li>
+                <%= link_to faqs_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> FAQ's
+                <% end %>
+              </li>
+              <li>
+                <%= link_to privacy_policy_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> Privacy Policy
+                <% end %>
+              </li>
+              <li>
+                <%= link_to temrs_conditions_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> Terms & Conditions
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <p class="ftr-titl">CONTACT US</p>
+            <ul class="ftr-ul">
+              <li>
+                <%= link_to contact_us_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> Contact Us
+                <% end %>
+              </li>
+              <li><a href="/login"><i class="fa fa-caret-right ftr-arw"></i> Login</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </div>
 <a href="#0" class="cd-top"><span class="top-botm">Top</span></a>
 </footer>
 <div class="container footer-copyright">

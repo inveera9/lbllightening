@@ -60,4 +60,17 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  Spree::Core::Engine.routes.append do
+     get '/about_us' => 'home#about_us', :as => :about_us
+     get '/careers' => 'home#careers', :as => :careers
+     get '/customer_service' => 'home#customer_service', :as => :customer_service
+     get '/faqs' => 'home#faqs', :as => :faqs
+     get '/shipping_delivery' => 'home#shipping_delivery', :as => :shipping_delivery
+     get '/price_guarantee' => 'home#price_guarantee', :as => :price_guarantee
+     get '/return_cancellation' => 'home#return_cancellation', :as => :return_cancellation
+     get '/privacy_policy' => 'home#privacy_policy', :as => :privacy_policy
+     get '/temrs_conditions' => 'home#temrs_conditions', :as => :temrs_conditions
+     get '/contact_us' => 'home#contact_us', :as => :contact_us
+
+  end
 end
