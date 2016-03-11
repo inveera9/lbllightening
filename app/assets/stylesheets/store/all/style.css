@@ -340,13 +340,8 @@ body{
 }
 .srch-lbl input{
   border-radius:0;
-  margin-top:8%;
+  margin-top:10%;
 }
-.head-marg{
-  margin-top:10px;
-  margin-bottom: 10px;
-}
-
 .free-shipping ul li{
   font-size:10pt;
   padding:0 15px;
@@ -2632,3 +2627,4 @@ label.star:before {
  text-align:justify;
  line-height:30px;
 }
+

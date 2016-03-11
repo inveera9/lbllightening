@@ -17,7 +17,7 @@
       <div class="ftr-bordr"></div>
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
             <p class="ftr-titl">GET TO KNOW US</p>
             <ul class="ftr-ul">
               <li>
@@ -27,12 +27,22 @@
               </li>
               <li>
                 <%= link_to careers_path do %>
-                  <i class="fa fa-caret-right ftr-arw"></i> Job Opportunities
+                  <i class="fa fa-caret-right ftr-arw"></i> Careers
                 <% end %>
               </li>
             </ul>
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+            <p class="ftr-titl">Quick Links</p>
+            <ul class="ftr-ul">
+              <li>
+                <%= link_to contact_us_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> Contact Us
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <p class="ftr-titl">SHOP WITH CONFIDENCE</p>
             <ul class="ftr-ul">
               <li>
@@ -41,23 +51,28 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to shipping_delivery_path do %>
-                  <i class="fa fa-caret-right ftr-arw"></i> Shipping + Delivery
-                <% end %>
-              </li>
-              <li>
                 <%= link_to price_guarantee_path do %>
                   <i class="fa fa-caret-right ftr-arw"></i> Price Guarantee
                 <% end %>
               </li>
               <li>
-                <%= link_to return_cancellation_path do %>
-                  <i class="fa fa-caret-right ftr-arw"></i> Return + Cancellation
+                <%= link_to faqs_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> FAQ's
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <p class="ftr-titl">Policy Info</p>
+            <ul class="ftr-ul">
+              <li>
+                <%= link_to shipping_delivery_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> Shipping + Delivery
                 <% end %>
               </li>
               <li>
-                <%= link_to faqs_path do %>
-                  <i class="fa fa-caret-right ftr-arw"></i> FAQ's
+                <%= link_to return_cancellation_path do %>
+                  <i class="fa fa-caret-right ftr-arw"></i> Return + Cancellation
                 <% end %>
               </li>
               <li>
@@ -72,19 +87,21 @@
               </li>
             </ul>
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <p class="ftr-titl">CONTACT US</p>
-            <ul class="ftr-ul">
-              <li>
-                <%= link_to contact_us_path do %>
-                  <i class="fa fa-caret-right ftr-arw"></i> Contact Us
-                <% end %>
-              </li>
-              <li><a href="/login"><i class="fa fa-caret-right ftr-arw"></i> Login</a></li>
-            </ul>
+          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+            <p class="ftr-titl">FIND US</p>
+              <ul class="ftr-ul">
+                <li>
+                  <address>
+                    <strong>iLighting</strong><br>
+                    1244 Market Street, Suite 900<br>
+                    Boston, CA 94103<br>
+                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                  </address>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-    </div>
+      </div>
   </div>
 <a href="#0" class="cd-top"><span class="top-botm">Top</span></a>
 </footer>
