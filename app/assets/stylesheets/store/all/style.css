@@ -2627,4 +2627,7 @@ label.star:before {
  text-align:justify;
  line-height:30px;
 }
+.text-faqs ul li{
+  list-style-type: initial !important;
+}
 
