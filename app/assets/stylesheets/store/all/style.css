@@ -441,11 +441,17 @@ body{
 @media only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 568px) {
+  .buy-cart-bttn .btn {
+    margin: 4px 15px 4px 11px !important;
+}
 .bottom-mob-slider .hidden-xs{
   display: block !important;
   height: 337px;
   overflow: hidden;
 }
+.cart-continue-popup .buy-cart-bttn .btn{
+  width: 100% !important;
+ }
 .hidden-xs{
   display: block !important;
 }
@@ -497,7 +503,8 @@ and (max-device-width : 568px) {
   font-size: 9pt !important;
 }
 #inside-product-cart-form .input-group-addon, .input-group-btn{
-  width: 82%;
+  /*width: 82%;*/
+   display: initial;
 }
 .btn-hot-wish {
     width: 100%;
