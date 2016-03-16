@@ -3,20 +3,36 @@
 <% cache [I18n.locale, current_currency, @product, @product.possible_promotions] do %>
   <div data-hook="product_show" itemscope itemtype="https://schema.org/Product" class="prd-details">
     <div class="row">
-      <div class="col-md-4" data-hook="product_left_part">
+      <div class="col-md-4 padding-left3" data-hook="product_left_part">
         <div data-hook="product_left_part_wrap">
           <div id="product-images" data-hook="product_images">
-            <div id="main-image" class="panel panel-default" data-hook>
+            <div id="main-image" class="" data-hook>
               <div class="panel-body text-center" id="surround">
-                <%= render :partial => 'image' %>
+                <div id="demon">
+                  <div class="row">
+                      <div class="col-md-12 col-sm-12">
+                          <ul id='girlstop1' class='gc-start'>
+                            <% if (@product.images + @product.variant_images).uniq.size > 1 %>
+                              <%= @product.images.each do |img|%>
+                                <li>
+                                  <%= image_tag(img.attachment.url(:large), class: "thumbnail bzoom_thumb_image") %>
+                              <% end %>
+                            <% else %>
+                              <li><%= image_tag 'default_product.jpeg' %></li>
+                            <% end %>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                <%#= render :partial => 'image' %>
               </div>
             </div>
-            <div id="thumbnails" data-hook>
+            <!-- <div id="thumbnails" data-hook>
               <div class="thumbelina-but horiz left"><i class="fa fa-chevron-left"></i></div>
-              <%= render :partial => 'thumbnails' %>
+              <%#= render :partial => 'thumbnails' %>
               <div class="thumbelina-but horiz right"><i class="fa fa-chevron-right"></i></div>
               
-            </div>
+            </div> -->
           </div>
 
           <div data-hook="product_properties">
@@ -249,20 +265,38 @@
 <%= render partial: 'spree/shared/footer_top' %>
  <script type = "text/javascript">
   // Initialize the slider.
-  $(function(){
-    $('#thumbnails').Thumbelina({
-      $bwdBut:$('#thumbnails .left'), 
-      $fwdBut:$('#thumbnails .right')
-    });
-  }); 
-  if( $("#product-thumbnails").children().length <= 6){
-    $('#thumbnails').find('i').addClass('inactive');
-  }
+  // $(function(){
+  //   $('#thumbnails').Thumbelina({
+  //     $bwdBut:$('#thumbnails .left'), 
+  //     $fwdBut:$('#thumbnails .right')
+  //   });
+  // }); 
+  // if( $("#product-thumbnails").children().length <= 6){
+  //   $('#thumbnails').find('i').addClass('inactive');
+  // }
 
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+  // $(function () {
+  //   $('[data-toggle="tooltip"]').tooltip()
+  // })
   $(document).ready(function(){
+    $('.pInstructions').hide();
+            //ZOOM
+            $("#girlstop1").glassCase({
+                'widthDisplay': 310, 'heightDisplay': 461, 'isSlowZoom': true, 'isSlowLens': true, 'capZType': 'in',
+                'thumbsPosition': 'left', 'isHoverShowThumbs': true, 'colorIcons': '#F15129', 'colorActiveThumb': '#F15129',
+                'mouseEnterDisplayCB': function () { $('.pInstructions').text('Click to open expanded view'); },
+                'mouseLeaveDisplayCB': function () { $('.pInstructions').text('Roll over image to zoom in'); }
+            });
+            setTimeout(function () {
+                $('.pInstructions').css({ 'width': $('.gc-display-area').outerWidth(), 'left': parseFloat($('.gc-display-area').css('left')) });
+                $('.pInstructions').fadeIn();
+            }, 1000);
+
+            $('#btnFeatures').on('click', function () {
+                $('html, body').animate({
+                    scrollTop: $('.tc-all-features').offset().top - 50 + 'px'
+                }, 800);
+            });
     $('.btn-hot-wish').click(function(e){
       e.preventDefault();
       $.ajax({

@@ -2637,4 +2637,24 @@ label.star:before {
 .text-faqs ul li{
   list-style-type: initial !important;
 }
-
+.padding-left3{
+  padding-left: 3px;
+}
+.gc-display-area {
+  border: 1px solid #ccc !important;
+}
+.glass-case ul li {
+   border-width: 1px !important;
+}
+.glass-case ul li:hover {
+  border-color: #ff8500 !important;
+}
+.glass-case ul li:focus {
+  border-color: #ff8500 !important;
+}
+.gc-icon {
+  opacity: 1 !important;
+  background: rgba(0, 0, 0, 0.54) none repeat scroll 0 0 !important;
+  color: #fff !important;
+  font-weight: bold !important;
+ }
