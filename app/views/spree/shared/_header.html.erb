@@ -192,8 +192,7 @@
 
     $('.delete-from-quick-cart').click(function(){
       var current = $(this)
-      current.parent().parent().find('input').attr('value', 0);
-      var id = $('.delete-from-quick-cart').attr('item-id')
+      var id = current.attr('item-id')
       $('.ajax-loader').show();
       update_cart(current,id)
       current.parent().parent().remove();
