@@ -1,43 +1,104 @@
-<h1><%= accurate_title %></h1>
-
-<div data-hook="account_summary" class="account-summary well">
-  <dl id="user-info">
-    <dt><%= Spree.t(:email) %></dt>
-    <dd><%= @user.email %> (<%= link_to Spree.t(:edit), spree.edit_account_path %>)</dd>
-  </dl>
-</div>
-
-<div data-hook="account_my_orders" class="account-my-orders">
-
-  <h3><%= Spree.t(:my_orders) %></h3>
-  <% if @orders.present? %>
-    <table class="table table-striped order-summary">
-      <thead class="active">
-      <tr>
-        <th class="order-number"><%= Spree::Order.human_attribute_name(:number) %></th>
-        <th class="order-date"><%= Spree.t(:date) %></th>
-        <th class="order-status"><%= Spree.t(:status) %></th>
-        <th class="order-payment-state"><%= Spree.t(:payment_state) %></th>
-        <th class="order-shipment-state"><%= Spree.t(:shipment_state) %></th>
-        <th class="order-total"><%= Spree.t(:total) %></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @orders.each do |order| %>
-        <tr>
-          <td class="order-number"><%= link_to order.number, order_url(order) %></td>
-          <td class="order-date"><%= l order.completed_at.to_date %></td>
-          <td class="order-status"><%= Spree.t("order_state.#{order.state}").titleize %></td>
-          <td class="order-payment-state"><%= Spree.t("payment_states.#{order.payment_state}").titleize if order.payment_state %></td>
-          <td class="order-shipment-state"><%= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
-          <td class="lead text-primary order-total"><%= order.display_total %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <div class="alert alert-info"><%= Spree.t(:you_have_no_orders_yet) %></div>
-  <% end %>
-  <br />
-
+<div class="row">
+  <div class="wish-order-account">
+    <div class="col-sm-2">
+      <nav class="nav-sidebar">
+        <ul class="nav tabs">
+          <li class="<%= params[:wishlist].present? ? '' : 'active'%>"><a href="#tab2" data-toggle="tab">Orders</a></li>
+          <li class=""><a href="#tab1" data-toggle="tab">My Account</a></li>
+          <li class="<%= params[:wishlist].present? ? 'active' : ''%>"><a href="#tab3" data-toggle="tab">Wishlist</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="tab-content review-page">
+      <div class="tab-pane text-style" id="tab1">
+        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+          <div class="change-pass-text">For your security, we recommend that you strengthen your password. <%= link_to "Change your password", spree.edit_account_path %>
+          </div>
+          <form class="form-inline">     
+            <div class="detail-ryt-end-outer begintx">
+              <div class="login-tx registration-tx">
+                <label class="lable-txt-aacount">Email Address:</label>
+                <div class="input-group col-md-4 col-xs-12">      
+                  <input type="text" class="form-control col-md-6" name="x" placeholder="<%=@user.email%>" disabled>
+                </div>
+              </div>
+              <div class="login-tx registration-tx">
+                <label class="lable-txt-aacount">Password:</label>
+                <div class="input-group col-md-4 col-xs-12">      
+                  <input type="text" class="form-control" name="x" placeholder="•••••••••" disabled>
+                </div>
+              </div>
+              <div class="login-tx my-acount-box">
+                <label class="lable-txt-aacount">Confirm Password:</label>
+                <div class="input-group col-md-4 col-xs-12">      
+                  <input type="text" class="form-control" name="x" placeholder="•••••••••" disabled>
+                </div>
+              </div>
+              <div class="login-tx registration-tx">
+                <label class="lable-txt-aacount"></label>
+                <div class="input-group col-md-4 col-xs-12">      
+                  <div class="shpo-cart-outer">
+                    <%= link_to spree.edit_account_path, class: 'btn btn-hot-wish text-uppercase' do %>
+                      <i class="fa fa-pencil-square-o"></i>   Edit
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="tab-pane <%= params[:wishlist].present? ? '' : 'active'%> text-style" id="tab2">
+        <div class="col-lg-10 col-md-10  col-sm-12 col-xs-12">
+          <div class="table-responsive">
+            <% if @orders.present? %>
+              <table class="table table-striped order-summary">
+                <thead class="active">
+                <tr>
+                <th class="order-number">Number</th>
+                <th class="order-date">Date</th>
+                <th class="order-status">Status</th>
+                <th class="order-payment-state">Payment State</th>
+                <th class="order-shipment-state">Shipment State</th>
+                <th class="order-total">Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <% @orders.each do |order| %>
+                    <tr>
+                      <td class="order-number"><%= link_to order.number, order_url(order) %></td>
+                      <td class="order-date"><%= l order.completed_at.to_date %></td>
+                      <td class="order-status"><%= Spree.t("order_state.#{order.state}").titleize %></td>
+                      <td class="order-payment-state"><%= Spree.t("payment_states.#{order.payment_state}").titleize if order.payment_state %></td>
+                      <td class="order-shipment-state"><%= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
+                      <td class="lead text-primary order-total"><%= order.display_total %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            <% else %>
+              <div class="alert alert-info"><%= Spree.t(:you_have_no_orders_yet) %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <div class="tab-pane text-style <%= params[:wishlist].present? ? 'active' : ''%>" id="tab3">
+      <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 review-page">
+        <% @wishlist = spree_current_user.wishlists.first %>
+        <div class="my-wish-account-right">
+          <div class="well well-sm">
+           <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12"><strong class="wish-text-right">WISHLIST </strong>(
+              <span class="wishlist-count">
+                <%= @wishlist.present? ? @wishlist.wished_products.size : 0%>
+              </span> Items)
+              <span class=""> <i class="fa fa-heart heart-wishlist"></i> Recently Added</span></div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12 innovative-text">BEST DESIGNS OF 2015 <span class="wish-text-right">NEW INNOVATIVE MODERN LIGHTING</span></div>
+           </div>
+          </div>
+        </div>
+        <%= render partial: 'spree/wishlists/wishlists'%>
+      </div>
+    </div>
+  </div>
 </div>

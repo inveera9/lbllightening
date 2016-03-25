@@ -13,57 +13,8 @@
             <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12 innovative-text">BEST DESIGNS OF 2015 <span class="wish-text-right">NEW INNOVATIVE MODERN LIGHTING</span></div>
            </div>
           </div>
-          </div>
-        <% if @wishlist.present? && @wishlist.wished_products.size > 0 %>
-          <% @wishlist.wished_products.each do |wish|
-            variant = wish.variant
-            product = variant.product 
-            url = spree.product_url(product) %>
-            <div class="wishlist-repeater" id="wishlist_<%=wish.id%>">
-              <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                <% if (product.images + product.variant_images).uniq.size > 0 %>
-                  <%= link_to small_image(product, itemprop: "image"), url, itemprop: 'url', class: 'img-responsive wish-img-res' %><br/>
-                <% else %>
-                  <%#= image_tag 'default_product.jpeg', size: '70x100' %>
-                <% end %>
-              </div>
-              <div class="border-bottom-wishlist">
-              <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="wish-line-height-text">
-                  <p class="prd-details-sub-title"><i class="fa fa-heart"></i> Added on <%= wish.created_at.strftime '%d-%m-%Y' %></p>
-                  <p><%= product.name %></p>
-                  <p class="in-out-stock">in Stock</p>
-                  <% stars = product.stars %>
-                  <div class="star-small-text star-and-counter" title="<%= txt_stars(stars) %>">
-                    <%= render 'spree/reviews/stars', stars: stars %>
-                  </div>
-                  <div class="counter-star-people"><%= link_to "#{product.reviews_count} Reviews", product_reviews_path(product) %></div>
-                  <div class="clearfix"></div>
-                  <div class="free-text-background">free shipping on most orders (check T&amp;C)</div>
-                  <p class="price-wish-text">Price : <%= display_price(product) %></p>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <ul>
-                  <li> <%= link_to "Related to this products", seo_url(product.taxons.first) %></li>
-                  <li>
-                    <%= link_to Spree.t(:remove_from_wishlist),"javascript:void(0)", "wish-id"=>wish.id ,class: 'delete-wish-item' %> 
-                  </li>
-                </ul>
-                <div class="buy-btn-wish">
-                <div class="buy-cart-bttn">
-                    <%= link_to "Add To Cart", url , class: "btn btn-hot text-uppercase btn-xs wish-text-btn" %>
-                    <%= link_to "Product Details", url, class: "btn btn-hot-wish text-uppercase btn-xs wish-text-btn" %>
-                  </div>
-                </div>
-              </div>
-              <div class="clearfix"></div>
-              </div>
-            </div>
-          <% end %>
-        <% else %>
-          <span>Your wishlist is empty</span>
-        <%end%>
+        </div>
+        <%= render partial: 'spree/wishlists/wishlists'%>
       </div>
       <div class="col-lg-3 col-md-3 col-lg-pull-9 col-md-pull-9">
         <div class="choose-review">
@@ -85,25 +36,3 @@
     </div>
   </div>
 </div>
-<script>
-  $(document).ready(function(){
-    $('.delete-wish-item').click(function(){
-      var id = $(this).attr('wish-id');
-      var current_item = $(this)
-      $.ajax({
-        url: '/wished_products/'+id,
-        type: 'DELETE',
-        success:function(response){
-          $('.wishlist-count').text(response.wishlist)
-          $('#wishlist_'+id).remove();
-          if ($('.wishlist-repeater').length == 0){
-            $(".my-wish-account-right").append("<span>Your wishlist is empty</span>");
-          }
-        },
-        error:function(){
-          alert('Error: Unable to delete item.');
-        }
-      });
-    })
-  })
-</script>

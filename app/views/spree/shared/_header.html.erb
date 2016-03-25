@@ -45,7 +45,7 @@
                  <% if spree_current_user.present? %>
                   <li><%= link_to "My Account", account_path %></li>
                   <li>
-                    <%= link_to "My Wishlist", wishlists_path %>
+                    <%= link_to "My Wishlist", account_path(wishlist: true) %>
                   </li>
                   <li><%= link_to "Logout", destroy_spree_user_session_path %></li>
                 <% else %> 
