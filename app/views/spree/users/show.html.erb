@@ -1,11 +1,11 @@
 <div class="row">
   <div class="wish-order-account">
-    <div class="col-sm-2">
+    <div class="col-sm-2"> 
       <nav class="nav-sidebar">
         <ul class="nav tabs">
-          <li class="<%= params[:wishlist].present? ? '' : 'active'%>"><a href="#tab2" data-toggle="tab">Orders</a></li>
-          <li class=""><a href="#tab1" data-toggle="tab">My Account</a></li>
-          <li class="<%= params[:wishlist].present? ? 'active' : ''%>"><a href="#tab3" data-toggle="tab">Wishlist</a></li>
+          <li class="<%= params[:wishlist].present? ? '' : 'active'%>"><a href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-file"> Orders</a></li>
+          <li class=""><a href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user"> My Account</a></li>
+          <li class="<%= params[:wishlist].present? ? 'active' : ''%>"><a href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-heart"> Wishlist</a></li>
         </ul>
       </nav>
     </div>
