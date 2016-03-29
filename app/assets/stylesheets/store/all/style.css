@@ -2800,3 +2800,65 @@ label.star:before {
 }
 /*==== My Account End ===========*/
 .gc-icon-download{display:none !important;}
+.address-multiple input[type=checkbox]:not(old),
+.address-multiple input[type=radio   ]:not(old){
+  width     : 2em;
+  padding   : 0;
+  opacity   : 0;
+  cursor:pointer;
+}
+.address-multiple input[type=checkbox]:not(old) + label,
+.address-multiple input[type=radio   ]:not(old) + label{
+  display      : inline !important;
+  margin-left  : 0;
+  line-height: 24px;
+  font-weight: normal;
+  font-size: 10pt;
+  cursor:pointer;
+  
+}
+.address-multiple input[type=checkbox]:not(old) + label,
+.address-multiple input:hover[type=radio]:not(old) + label{
+  /*color:#4ac9d7;*/
+}
+.address-multiple input[type=checkbox]:not(old) + label > span,
+.address-multiple input[type=radio   ]:not(old) + label > span{
+  display          : inline-block;
+  width            : 20px;
+  height           : 20px;
+
+  border           : 0.0625em solid rgb(192,192,192);
+  border-radius    : 50%;
+  background       : #fff;
+  vertical-align   : bottom;
+  margin-left      : -41px;
+}
+.address-multiple input[type=checkbox]:not(old) + label > span,
+.address-multiple input:hover[type=radio   ]:not(old) + label > span{
+  border           : 0.0625em solid rgb(74,201,215);
+}
+.address-multiple input[type=checkbox]:not(old):checked + label > span,
+.address-multiple input[type=radio   ]:not(old):checked + label > span{
+border           : solid 1px #4ac9d7;
+margin-left      : -41px;
+}
+.address-multiple input[type=radio]:not(old):checked +  label > span > span{
+  display          : block;
+  width            : 12px;
+  height           : 12px;
+  margin           : 3px;
+  border           : solid 1px #4ac9d7;
+  border-radius    : 50%;
+  background       :#4ac9d7;
+}
+.edit-right{
+ float:right;
+}
+.div-left-radio{
+  margin-left: 10px;
+  position: relative;
+  top: -26px;
+}
+.marginb10{
+  margin-bottom: 10px;
+}

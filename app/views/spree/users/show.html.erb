@@ -4,7 +4,8 @@
       <nav class="nav-sidebar">
         <ul class="nav tabs">
           <li class="<%= params[:wishlist].present? ? '' : 'active'%>"><a href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-file"> Orders</a></li>
-          <li class=""><a href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user"> My Account</a></li>
+          <li class=""><a href="#tab1" data-toggle="tab"><span aria-hidden="true" class="glyphicon glyphicon-user"></span> My Account</a></li>
+          <li class=""><a href="#tab4" data-toggle="tab"><span aria-hidden="true" class="glyphicon glyphicon-map-marker"></span> My Addresses</a></li>
           <li class="<%= params[:wishlist].present? ? 'active' : ''%>"><a href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-heart"> Wishlist</a></li>
         </ul>
       </nav>
@@ -100,5 +101,57 @@
         <%= render partial: 'spree/wishlists/wishlists'%>
       </div>
     </div>
+    <div class="tab-pane text-style" id="tab4">
+      <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 review-page">
+        <div class="public-share-wishlish">Address </div>
+        <br>
+        <% if spree_current_user.addresses.present? %>
+          <% spree_current_user.addresses.each do |address| %>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <address>
+                <%= address %>
+              </address>
+                <ul class="list-inline">
+                  <li><%= link_to Spree.t(:edit), edit_address_path(address) %></li>
+                  <li><%= link_to Spree.t(:remove), address_path(address), method: :delete, confirm: Spree.t(:are_you_sure) %></li>
+                </ul>
+            </div>
+          <% end %>
+        <% else %>
+          <div id='users-address-list-empty'>
+            <div id="users-address-list-empty">No addresses</div>
+          </div>
+        <% end %>
+        <br>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div id='new_address_link'>
+            <%= link_to t(:add_new_shipping_address, scope: :address_book), controller: :addresses, action: :new %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+<!-- <h3><%#= t(:shipping_addresses, scope: :address_book) %></h3>
+<%# if spree_current_user.addresses.present? %>
+<table id='user_addresses' class="table table-striped">
+  <tbody>
+    <%# spree_current_user.addresses.each do |address| %>
+    <tr>
+      <td><%#= address.to_s.gsub("<br/>", ", ") %></td>
+      <td>
+        <%#= link_to Spree.t(:edit), edit_address_path(address) %>&nbsp;
+        <%#= link_to Spree.t(:remove), address_path(address), method: :delete, confirm: Spree.t(:are_you_sure) %>
+      </td>
+    </tr>
+    <%# end %>
+  </tbody>
+</table>
+<%# else %>
+<div id='users-address-list-empty'>
+  <%#= t(:no_shipping_addresses_on_file, scope: :address_book) %>
+</div>
+<%# end %>
+<div id='new_address_link'>
+  <%#= link_to t(:add_new_shipping_address, scope: :address_book), controller: :addresses, action: :new %>
+</div> -->
