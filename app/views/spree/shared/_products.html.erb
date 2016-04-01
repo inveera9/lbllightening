@@ -25,7 +25,7 @@
   <div id="products" class="row" data-hook>
     <% products.each do |product| %>
       <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
-      <div id="product_<%= product.id %>" class="col-md-4 col-sm-6 product-list-item hover-effect-category" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
+      <div id="product_<%= product.id %>" class="col-md-3 col-sm-6 product-list-item hover-effect-category" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
         <div class="off-money">25% OFF</div>
         <div class="thumbnail">
           <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
@@ -47,7 +47,7 @@
             <span class="title-gray15">
             <%= link_to url do %>
               <p class="group inner list-group-item-heading" title="<%= product.name %>">
-                 <%= truncate(product.name, length: 33) %>
+                 <%= truncate(product.name, length: 22) %>
               </p>
               <div class="row">
                  <div class="col-xs-12 col-md-12">

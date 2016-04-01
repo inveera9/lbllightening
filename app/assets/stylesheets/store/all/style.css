@@ -2862,3 +2862,13 @@ margin-left      : -41px;
 .marginb10{
   margin-bottom: 10px;
 }
+.view-icon span{
+  font-size: 15pt;
+  color: #000;
+}
+.ajax-loader1{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 99;
+}

@@ -1,0 +1,2 @@
+$("#product-list").children().remove()
+$("#product-list").append("<%= j render(partial: 'spree/shared/products', :locals => { :products => @products }) %>")

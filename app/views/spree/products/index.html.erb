@@ -36,25 +36,28 @@
       <div class="col-lg-9 col-md-9 col-sm-12 col-sx-12">
         <div class="well well-sm">
           <div class="row">
-            <div class="col-lg-7 col-md-7 col-sm-12 col-sx-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12">
               <strong class="view-type">All Products</strong>
             </div>
-            <!-- <div class="col-lg-5 col-md-5 col-sm-12 col-sx-12">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-sx-12 view-icon">
+              <strong class="view-type">Show In: </strong><a href="javascript:void(0)" class="grid-three"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></a>
+              <a href="javascript:void(0)" class="grid-four"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></a>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-sx-12">
               <div class="form-group">
                 <label for="products" class="col-md-4 control-label text-right">
                   <strong class="view-type">Sort By: </strong>
                 </label>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                  <select class="form-control" name="products">
-                    <option>Recommended</option>
-                    <option>Top Rated</option>
-                    <option>Price (Low to High)</option>
-                    <option>Price (High to Low)</option>
+                  <select class="form-control" name="products" id="sorting-filter">
+                    <option value="">Choose Filter</option>
+                    <option value="ascend_by_master_price">Price (Low to High)</option>
+                    <option value="descend_by_master_price">Price (High to Low)</option>
                   </select>
                 </div>
               </div>
-            </div> -->
-         </div>
+            </div>
+          </div>
          </div>
           <% if params[:keywords] %>
             <div data-hook="search_results">
@@ -65,7 +68,7 @@
               <% end %>
             </div>
           <% else %>
-            <div data-hook="homepage_products">
+            <div data-hook="homepage_products" id="product-list">
               <% cache(cache_key_for_products) do %>
                 <%= render :partial => 'spree/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
               <% end %>
@@ -74,4 +77,36 @@
       </div>
     </div>
   </div>
-
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#sorting-filter").on('change',function(){
+      var filter = this.value;
+      if (filter=="") return;
+      $(".ajax-loader1").show();
+      //document.body.style.backgroundColor = 'rgb(' + [210,210,201].join(',') + ')';
+      $('body').css('opacity', 0.8)
+      $.ajax({
+        url: '/products',
+        method: 'GET',
+        data:{sorting: filter},
+        success:function(){
+          $(".ajax-loader1").hide();
+          $('body').css('opacity', 1)
+          //document.body.style.backgroundColor = 'rgb(' + [255,255,255].join(',') + ')';
+        }
+      });
+    });
+    $('.grid-four').click(function(){
+      $('#products').find('.col-md-4').each(function(index,value){
+        $(value).removeClass('col-md-4')
+        $(value).addClass('col-md-3')
+      });
+    });
+    $('.grid-three').click(function(){
+      $('#products').find('.col-md-3').each(function(index,value){
+        $(value).removeClass('col-md-3')
+        $(value).addClass('col-md-4')
+      });
+    });
+  })  
+</script>

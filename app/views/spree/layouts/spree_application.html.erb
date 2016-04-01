@@ -8,6 +8,7 @@
     <%= render partial: 'spree/shared/head' %>
   </head>
   <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
+    <div class="ajax-loader1" style="display:none;"><img src="/assets/ajax-loader.gif"></div>
     <%= render partial: 'spree/shared/google_analytics.js' %>
     <%= render partial: 'spree/shared/header' %>
     <div class="<%= PAGES.include?(params['action']) ? '' : 'container' %>">
