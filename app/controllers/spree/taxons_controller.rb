@@ -6,20 +6,17 @@ module Spree
     respond_to :html, :js
 
     def show
-      @sort_options = { 
-          "Most Popular" => "descend_by_popularity", 
-          "Name: A to Z" => "ascend_by_name", 
-          "Name: Z to A" => "descend_by_name", 
-          "Price: High to Low" => "descend_by_master_price", 
-          "Price: Low to High" => "ascend_by_master_price", 
-      }
       @taxon = Spree::Taxon.friendly.find(params[:id])
       return unless @taxon
       if request.xhr?
-        byebug
         sorting_scope = params[:sorting].try(:to_sym)
-        @searcher = build_searcher(params.merge(taxon: @taxon.id, include_images: true))
-        @products = @searcher.retrieve_products.send(sorting_scope)
+        hash = {}
+        @products = []
+        @taxon.products.select{|pro| hash[pro.id] = pro.price.to_f}
+        hash_array = params[:sorting] == "descend_by_master_price" ? hash.sort_by {|k,v| v}.reverse : hash.sort_by {|k,v| v}
+        hash_array.each do |product|
+          @taxon.products.select{|pro| @products << pro if pro.id == product[0]}
+        end
         @taxonomies = Spree::Taxonomy.includes(root: :children)
         respond_to do |format| 
           format.js
