@@ -9,26 +9,36 @@ module Spree
       @taxon = Spree::Taxon.friendly.find(params[:id])
       return unless @taxon
       if request.xhr?
-        sorting_scope = params[:sorting].try(:to_sym)
-        hash = {}
-        @products = []
-        @taxon.products.select{|pro| hash[pro.id] = pro.price.to_f}
-        hash_array = params[:sorting] == "descend_by_master_price" ? hash.sort_by {|k,v| v}.reverse : hash.sort_by {|k,v| v}
-        hash_array.each do |product|
-          @taxon.products.select{|pro| @products << pro if pro.id == product[0]}
-        end
+        get_products(params)
         @taxonomies = Spree::Taxonomy.includes(root: :children)
         respond_to do |format| 
           format.js
         end
       else
-        @searcher = build_searcher(params.merge(taxon: @taxon.id, include_images: true))
-        @products = @searcher.retrieve_products
+        if params[:page].present?
+          get_products(params)
+        else
+          @searcher = build_searcher(params.merge(taxon: @taxon.id, include_images: true))
+          @products = @searcher.retrieve_products
+        end
         @taxonomies = Spree::Taxonomy.includes(root: :children)
       end
     end
 
     private
+
+    def get_products(params)
+      sorting_scope = params[:sorting].try(:to_sym)
+      hash = {}
+      products = []
+      @taxon.products.select{|pro| hash[pro.id] = pro.price.to_f}
+      hash_array = params[:sorting] == "descend_by_master_price" ? hash.sort_by {|k,v| v}.reverse : hash.sort_by {|k,v| v}
+      hash_array.each do |product|
+        @taxon.products.select{|pro| products << pro if pro.id == product[0]}
+      end
+      page = params[:page].present? ? params[:page] : 1
+      @products = Kaminari.paginate_array(products).page(page).per(12)
+    end
 
     def accurate_title
       if @taxon

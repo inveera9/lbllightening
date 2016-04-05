@@ -83,7 +83,6 @@
       var filter = this.value;
       if (filter=="") return;
       $(".ajax-loader1").show();
-      //document.body.style.backgroundColor = 'rgb(' + [210,210,201].join(',') + ')';
       $('body').css('opacity', 0.8)
       $.ajax({
         url: '/products',
@@ -91,8 +90,11 @@
         data:{sorting: filter},
         success:function(){
           $(".ajax-loader1").hide();
-          $('body').css('opacity', 1)
-          //document.body.style.backgroundColor = 'rgb(' + [255,255,255].join(',') + ')';
+          $('body').css('opacity', 1);
+        },
+        error:function(){
+          alert("Error: Something went wrong.")
+          $(".ajax-loader1").hide();
         }
       });
     });

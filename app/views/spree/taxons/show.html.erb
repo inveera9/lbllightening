@@ -83,14 +83,21 @@
       var path = location.pathname
       //document.body.style.backgroundColor = 'rgb(' + [210,210,201].join(',') + ')';
       $('body').css('opacity', 0.8)
+      var page = ""
+      if (window.location.search.length > 0){
+        page = window.location.search.split('&')[0].replace('?','').split('=')[1]
+      }
       $.ajax({
         url: path,
         method: 'GET',
-        data:{id: location.pathname.split("/t/")[1], sorting: filter},
+        data:{id: location.pathname.split("/t/")[1], sorting: filter, page: page},
         success:function(){
           $(".ajax-loader1").hide();
           $('body').css('opacity', 1)
-          //document.body.style.backgroundColor = 'rgb(' + [255,255,255].join(',') + ')';
+        },
+        error:function(){
+          alert("Error: Something went wrong.")
+          $(".ajax-loader1").hide();
         }
       });
     });
